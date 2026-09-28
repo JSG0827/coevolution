@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="기후이동과 지구시스템의 공진화 되먹임을 탐구하는 개인 의사결정 시뮬레이션">
+  <meta name="theme-color" content="#092f35">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23092f35'/%3E%3Cpath d='M14 37c8-12 15-15 22-9 5 4 9 4 15-1-2 14-10 23-22 23-7 0-12-5-15-13Z' fill='%2379d7b0'/%3E%3Cpath d='M12 21c10-6 19-6 27 0 5 4 9 4 14 0' fill='none' stroke='%23f1bd5b' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <title>공진화 정착 연구소</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">≈</span>
+        <div>
+          <strong>공진화 정착 연구소</strong>
+          <span>기후이동 의사결정 시뮬레이션</span>
+        </div>
+      </div>
+      <div class="step-pill" id="stepPill">준비</div>
+    </header>
+
+    <section class="screen active" id="introScreen" aria-labelledby="introTitle">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <p class="eyebrow">새봄시 · 2045년</p>
+          <h1 id="introTitle">1,200명의 기후이동 신청.<br><em>도시는 무엇을 바꿔야 할까?</em></h1>
+          <p class="lead">침수와 토양 염류화로 삶의 터전을 떠난 주민들이 새봄시에 정착을 신청했습니다. 세 가지 정책을 선택하세요. 선택은 사람뿐 아니라 물, 토양, 생물, 그리고 다시 도시의 미래를 바꿉니다.</p>
+          <div class="mission-strip">
+            <span>정책 3개 선택</span><span>숨은 주민 조건 공개</span><span>돌발 상황 대응</span><span>공진화 고리 완성</span>
+          </div>
+          <div class="start-row">
+            <label for="studentId">결과지에 표시할 출석번호 또는 별칭</label>
+            <div><input id="studentId" maxlength="16" autocomplete="off" placeholder="예: 207 또는 바다새"><button class="primary-btn" id="startBtn">시작 <span aria-hidden="true">→</span></button></div>
+            <p class="field-error" id="studentError" role="alert"></p>
+          </div>
+        </div>
+        <aside class="brief-card" aria-label="활동 안내">
+          <div class="map-preview" aria-hidden="true">
+            <div class="map-land"></div><div class="map-water"></div><div class="map-city">새봄시</div><div class="map-wetland">습지</div>
+          </div>
+          <dl>
+            <div><dt>활동 시간</dt><dd>약 35분</dd></div>
+            <div><dt>진행 방식</dt><dd>개인 활동</dd></div>
+            <div><dt>결과물</dt><dd>개인 정책 결정서</dd></div>
+          </dl>
+          <p class="microcopy">정답을 찾는 게임이 아닙니다. 선택의 효과와 부작용을 근거로 설명하는 활동입니다.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" id="policyScreen" aria-labelledby="policyTitle">
+      <div class="workspace-head">
+        <div><p class="eyebrow">1단계 · 첫 정착 계획</p><h2 id="policyTitle">정책 세 가지를 선택하세요</h2></div>
+        <div class="selection-counter"><strong id="selectedCount">0</strong><span>/ 3 선택</span></div>
+      </div>
+      <p class="section-note">정책마다 다른 사람과 지구시스템에 서로 다른 영향을 줍니다. 카드를 선택하면 예상 효과를 볼 수 있습니다.</p>
+      <div class="policy-grid" id="policyGrid"></div>
+      <div class="sticky-action">
+        <p id="policyHint">정책을 3개 선택하면 다음 단계로 갈 수 있습니다.</p>
+        <button class="primary-btn" id="confirmPolicyBtn" disabled>선택 확정</button>
+      </div>
+    </section>
+
+    <section class="screen" id="reasonScreen" aria-labelledby="reasonTitle">
+      <div class="workspace-head">
+        <div><p class="eyebrow">2단계 · 선택 근거</p><h2 id="reasonTitle">왜 이 정책이 먼저 필요할까요?</h2></div>
+      </div>
+      <p class="section-note">각 정책의 효과뿐 아니라 예상되는 부담이나 한계도 함께 생각해 보세요.</p>
+      <div class="reason-grid" id="reasonGrid"></div>
+      <div class="inline-actions">
+        <button class="ghost-btn" id="backToPolicyBtn">정책 다시 선택</button>
+        <button class="primary-btn" id="runSimulationBtn" disabled>정착 결과 확인</button>
+      </div>
+    </section>
+
+    <section class="screen" id="revealScreen" aria-labelledby="revealTitle">
+      <div class="workspace-head">
+        <div><p class="eyebrow">3단계 · 1차 정착 결과</p><h2 id="revealTitle">같은 정책도 주민 조건에 따라 다르게 작동합니다</h2></div>
+      </div>
+      <p class="section-note">아래 구성은 처음에는 공개되지 않았습니다. ‘선호’는 고정된 성격이 아니라 현재의 생계·건강·돌봄 조건에서 생긴 우선 필요입니다.</p>
+      <div class="result-hero" id="resultHero"></div>
+      <div class="reveal-layout">
+        <div class="panel"><div class="panel-head"><h3>이동 주민 구성</h3><span>총 1,200명</span></div><div id="profileList"></div></div>
+        <div class="panel"><div class="panel-head"><h3>도시 상태</h3><span>100점 기준</span></div><div id="metricList"></div></div>
+      </div>
+      <div class="insight-box" id="initialInsight"></div>
+      <div class="inline-actions end"><button class="primary-btn" id="drawEventBtn">10년 후 돌발 상황 확인</button></div>
+    </section>
+
+    <section class="screen" id="eventScreen" aria-labelledby="eventTitle">
+      <div class="event-banner" id="eventBanner"></div>
+      <div class="workspace-head event-heading">
+        <div><p class="eyebrow">4단계 · 적응 정책</p><h2 id="eventTitle">정책 하나를 추가해 대응하세요</h2></div>
+        <div class="selection-counter"><strong id="addedCount">0</strong><span>/ 1 추가</span></div>
+      </div>
+      <p class="section-note">처음 정책을 바꿀 수는 없습니다. 새로 드러난 문제를 보완할 정책을 한 가지 선택하세요.</p>
+      <div class="policy-grid compact-grid" id="eventPolicyGrid"></div>
+      <div class="response-box">
+        <label for="eventReason">이 정책을 추가한 이유</label>
+        <textarea id="eventReason" rows="3" maxlength="240" placeholder="돌발 상황, 주민의 필요, 지구시스템 영향을 연결해 작성하세요."></textarea>
+        <div class="inline-actions"><span class="micro-status" id="eventHint">정책을 선택하고 이유를 작성하세요.</span><button class="primary-btn" id="confirmEventBtn" disabled>대응 결과 확인</button></div>
+      </div>
+    </section>
+
+    <section class="screen" id="loopScreen" aria-labelledby="loopTitle">
+      <div class="workspace-head">
+        <div><p class="eyebrow">5단계 · 공진화 고리</p><h2 id="loopTitle">선택이 되돌아오는 경로를 완성하세요</h2></div>
+      </div>
+      <p class="section-note">단순히 ‘환경이 좋아진다’고 쓰지 말고, 물·토양·대기·생물 중 무엇이 어떻게 변하는지 구체적으로 작성하세요.</p>
+      <div class="loop-builder">
+        <div class="loop-node fixed"><span>① 기후 압력</span><strong id="loopPressure"></strong></div><span class="loop-arrow" aria-hidden="true">→</span>
+        <div class="loop-node fixed"><span>② 생명·생활 변화</span><strong id="loopResponse"></strong></div><span class="loop-arrow" aria-hidden="true">→</span>
+        <div class="loop-node policy-node"><span>③ 인간의 선택</span><strong id="loopPolicy"></strong></div><span class="loop-arrow" aria-hidden="true">→</span>
+        <label class="loop-node input-node"><span>④ 지구시스템의 변화</span><textarea id="earthEffect" rows="3" maxlength="180" placeholder="예: 습지의 물 저장 능력과 생물 서식 공간이 증가한다."></textarea></label><span class="loop-arrow" aria-hidden="true">→</span>
+        <label class="loop-node input-node"><span>⑤ 다시 돌아온 영향</span><textarea id="returnEffect" rows="3" maxlength="180" placeholder="예: 홍수 피해와 추가 이주 위험이 낮아진다."></textarea></label>
+        <span class="return-arrow" aria-hidden="true">↶</span>
+      </div>
+      <div class="loop-reflection">
+        <fieldset><legend>이 고리는 어떤 되먹임인가요?</legend><label><input type="radio" name="loopType" value="위험을 완화하는 되먹임"> 위험을 완화한다</label><label><input type="radio" name="loopType" value="위험을 강화하는 되먹임"> 위험을 강화한다</label><label><input type="radio" name="loopType" value="조건에 따라 달라지는 되먹임"> 조건에 따라 달라진다</label></fieldset>
+        <label for="tradeoff">정책으로 새롭게 생길 수 있는 부담이나 불평등</label>
+        <textarea id="tradeoff" rows="3" maxlength="200" placeholder="혜택뿐 아니라 비용, 공간, 생태 또는 특정 집단의 부담을 적으세요."></textarea>
+      </div>
+      <div class="inline-actions end"><span class="micro-status" id="loopHint">빈칸을 모두 완성하세요.</span><button class="primary-btn" id="finishBtn" disabled>개인 결과지 만들기</button></div>
+    </section>
+
+    <section class="screen" id="reportScreen" aria-labelledby="reportTitle">
+      <div class="report-toolbar no-print">
+        <div><p class="eyebrow">활동 완료</p><h2 id="reportTitle">나의 공진화 정책 결정서</h2></div>
+        <div class="toolbar-actions"><button class="ghost-btn" id="copyBtn">내용 복사</button><button class="primary-btn" id="printBtn">PDF로 저장·인쇄</button></div>
+      </div>
+      <article class="report-sheet" id="reportSheet"></article>
+      <div class="inline-actions end no-print"><button class="ghost-btn" id="restartBtn">처음부터 다시 하기</button></div>
+    </section>
+  </main>
+  <script src="./game.js"></script>
+</body>
+</html>
