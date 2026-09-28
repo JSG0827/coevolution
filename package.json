@@ -8,6 +8,6 @@
     "build": "node scripts/verify.mjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": "24.x"
   }
 }
