@@ -1,0 +1,13 @@
+{
+  "name": "coevolution-migration-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "고등학교 지구시스템과학 기후이동·공진화 개인 시뮬레이션",
+  "scripts": {
+    "dev": "node server.mjs",
+    "build": "node scripts/verify.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
