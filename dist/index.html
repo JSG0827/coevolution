@@ -67,90 +67,89 @@
 
     <section class="screen" id="policyScreen" aria-labelledby="policyTitle">
       <div class="workspace-head">
-        <div><p class="eyebrow">2단계 · 첫 정착 계획</p><h2 id="policyTitle">환경과 주민을 위한 정책 세 가지를 선택하세요</h2></div>
+        <div><p class="eyebrow">2단계 · 정착 전략</p><h2 id="policyTitle">정책 세 가지로 정착 전략을 만드세요</h2></div>
         <div class="selection-counter"><strong id="selectedCount">0</strong><span>/ 3 선택</span></div>
       </div>
-      <p class="section-note">카드의 주민·지구시스템 효과를 비교하세요.</p>
+      <p class="section-note">정책명과 핵심 효과를 먼저 비교하고, 필요한 카드만 자세히 펼쳐보세요.</p>
+      <div class="policy-filter-row" id="policyFilters" aria-label="정책 범주"></div>
       <div class="policy-grid" id="policyGrid"></div>
+      <section class="strategy-tray" aria-labelledby="strategyTrayTitle">
+        <div class="panel-head"><h3 id="strategyTrayTitle">나의 정착 전략</h3><span>선택한 정책과 빠진 요소를 확인하세요</span></div>
+        <div class="selected-policy-tray" id="selectedStrategyTray"></div>
+        <div class="coverage-diagnostic" id="coverageDiagnostic"></div>
+      </section>
+      <div class="strategy-reason-box">
+        <label for="strategyReason">세 정책을 함께 선택한 이유</label>
+        <textarea id="strategyReason" rows="3" maxlength="300" placeholder="관측 자료와 주민·지구시스템의 필요를 연결해 전략을 한 문장으로 작성하세요."></textarea>
+      </div>
       <div class="sticky-action">
-        <p id="policyHint">정책을 3개 선택하면 다음 단계로 갈 수 있습니다.</p>
-        <button class="primary-btn" id="confirmPolicyBtn" disabled>선택 확정</button>
+        <p id="policyHint">정책 3개를 선택하고 전략을 작성하세요.</p>
+        <button class="primary-btn" id="confirmPolicyBtn" disabled>10년 후로 이동</button>
       </div>
-    </section>
-
-    <section class="screen" id="reasonScreen" aria-labelledby="reasonTitle">
-      <div class="workspace-head">
-        <div><p class="eyebrow">3단계 · 선택 근거</p><h2 id="reasonTitle">왜 이 정책이 먼저 필요할까요?</h2></div>
-      </div>
-      <p class="section-note">관측 근거와 예상되는 한계를 함께 기록하세요.</p>
-      <div class="reason-grid" id="reasonGrid"></div>
-      <div class="inline-actions">
-        <button class="ghost-btn" id="backToPolicyBtn">정책 다시 선택</button>
-        <button class="primary-btn" id="runSimulationBtn" disabled>정착 결과 확인</button>
-      </div>
-    </section>
-
-    <section class="screen" id="revealScreen" aria-labelledby="revealTitle">
-      <div class="workspace-head">
-        <div><p class="eyebrow">4단계 · 정착 직후</p><h2 id="revealTitle">같은 환경에서도 필요한 지원은 다릅니다</h2></div>
-      </div>
-      <p class="section-note science-note">주민의 우선 필요는 생계·건강·돌봄 조건에 따라 달라집니다.</p>
-      <div class="result-hero" id="resultHero"></div>
-      <div class="reveal-layout">
-        <div class="panel"><div class="panel-head"><h3>이동 주민 구성</h3><span>총 1,200명</span></div><div id="profileList"></div></div>
-        <div class="panel"><div class="panel-head"><h3>필요 충족도</h3><span>100점 기준</span></div><div id="metricList"></div></div>
-      </div>
-      <div class="insight-box" id="initialInsight"></div>
-      <div class="inline-actions end"><button class="primary-btn" id="drawEventBtn">10년 후 관측 결과 확인</button></div>
     </section>
 
     <section class="screen" id="eventScreen" aria-labelledby="eventTitle">
       <div class="event-banner" id="eventBanner"></div>
+      <div class="settlement-snapshot" id="settlementSnapshot"></div>
       <div class="workspace-head event-heading">
-        <div><p class="eyebrow">5단계 · 10년 후 적응</p><h2 id="eventTitle">정책 하나를 추가해 대응하세요</h2></div>
+        <div><p class="eyebrow">3단계 · 2055년 사건</p><h2 id="eventTitle">사건에 대응할 정책 하나를 추가하세요</h2></div>
         <div class="selection-counter"><strong id="addedCount">0</strong><span>/ 1 추가</span></div>
       </div>
-      <p class="section-note">초기 정책은 유지됩니다. 새 문제를 보완할 정책 1개를 추가하세요.</p>
+      <p class="section-note">정책을 사건과 연결되는 방식에 따라 나누었습니다. 다른 접근도 자유롭게 비교할 수 있습니다.</p>
+      <div class="policy-filter-row" id="eventPolicyFilters" aria-label="사건 대응 방식"></div>
       <div class="policy-grid compact-grid" id="eventPolicyGrid"></div>
       <div class="response-box">
-        <label for="eventReason">이 정책을 추가한 이유</label>
-        <textarea id="eventReason" rows="3" maxlength="240" placeholder="돌발 상황, 주민의 필요, 지구시스템 영향을 연결해 작성하세요."></textarea>
+        <label for="eventReason">이 대응으로 달라질 것이라고 예상하는 결과</label>
+        <textarea id="eventReason" rows="3" maxlength="240" placeholder="예: 침수 위험을 직접 줄여 2차 이동 주민이 감소할 것이다."></textarea>
         <div class="inline-actions"><span class="micro-status" id="eventHint">정책을 선택하고 이유를 작성하세요.</span><button class="primary-btn" id="confirmEventBtn" disabled>대응 결과 확인</button></div>
       </div>
     </section>
 
     <section class="screen" id="outcomeScreen" aria-labelledby="outcomeTitle">
       <div class="workspace-head">
-        <div><p class="eyebrow">6단계 · 10년 후 결과</p><h2 id="outcomeTitle">사람과 지구시스템은 함께 달라졌습니다</h2></div>
+        <div><p class="eyebrow">4단계 · 결과 비교</p><h2 id="outcomeTitle">10년 후, 무엇이 달라졌을까?</h2></div>
       </div>
-      <p class="section-note science-note">전체 1,200명은 네 상태 중 하나에 포함됩니다.</p>
+      <p class="section-note science-note">같은 2055년 사건에서 추가 대응의 유무만 바꾸어 결과를 비교합니다.</p>
+      <section class="response-comparison" aria-labelledby="responseComparisonTitle">
+        <div class="comparison-title-row"><div><span>한눈에 보는 결과</span><h3 id="responseComparisonTitle">내 대응이 만든 핵심 변화</h3></div><p id="comparisonPolicyLabel"></p></div>
+        <div class="counterfactual-grid" id="responseComparison"></div>
+      </section>
+      <div class="result-section-head"><h3>선택한 대응 이후의 주민 상태</h3><span>전체 1,200명</span></div>
       <div class="population-bar" id="populationBar" aria-label="최종 인구 상태 비율"></div>
       <div class="population-flow" id="populationFlow"></div>
-      <div class="outcome-layout">
-        <div class="panel"><div class="panel-head"><h3>필요 충족도 변화</h3><span>정착 직후 → 10년 후</span></div><div id="finalNeeds"></div></div>
-        <div class="panel"><div class="panel-head"><h3>지구시스템 지표</h3><span>2045=100</span></div><div id="earthMetrics"></div></div>
-      </div>
-      <div class="causal-receipt" id="causalReceipt"></div>
+      <details class="outcome-details" id="outcomeDetails">
+        <summary><span>주민·지구시스템 자세히 비교하기</span><small>주민 필요 5개 · 지구시스템 4개</small></summary>
+        <div class="graph-legend" aria-label="결과 그래프 읽는 법"><span><i class="legend-current"></i>색: 현재 상태</span><span><b>▲ ― ▼</b> 기호: 변화 방향</span><span><i class="legend-baseline"></i>선: 2045년 기준</span></div>
+        <div class="outcome-layout">
+          <div class="panel"><div class="panel-head"><h3>주민의 필요 상태</h3><span>현재 상태 · 10년 변화</span></div><div id="finalNeeds"></div></div>
+          <div class="panel"><div class="panel-head"><h3>지구시스템 상태</h3><span>현재 상태 · 2045년 대비</span></div><div id="earthMetrics"></div></div>
+        </div>
+        <div class="causal-receipt" id="causalReceipt"></div>
+      </details>
       <div class="inline-actions end"><button class="primary-btn" id="goToLoopBtn">공진화 고리로 설명하기</button></div>
     </section>
 
     <section class="screen" id="loopScreen" aria-labelledby="loopTitle">
       <div class="workspace-head">
-        <div><p class="eyebrow">7단계 · 공진화 고리</p><h2 id="loopTitle">자료에서 시작해 되먹임을 완성하세요</h2></div>
+        <div><p class="eyebrow">5단계 · 공진화 설명</p><h2 id="loopTitle">자료에서 시작해 되먹임을 완성하세요</h2></div>
       </div>
       <p class="section-note science-note">물·토양·대기·생물 중 무엇이 어떻게 변하는지 구체적으로 쓰세요.</p>
+      <section class="loop-policy-picker" aria-labelledby="loopPolicyPickerTitle">
+        <div><p class="eyebrow">설명할 정책 선택</p><h3 id="loopPolicyPickerTitle">내가 선택한 정책 중 하나를 고르세요</h3></div>
+        <div class="loop-policy-options" id="loopPolicyChoices"></div>
+        <div class="loop-policy-context hidden" id="loopPolicyContext"></div>
+      </section>
       <div class="loop-builder">
         <div class="loop-node fixed"><span>① 처음 관측한 자료</span><strong id="loopPressure"></strong></div><span class="loop-arrow" aria-hidden="true">→</span>
         <div class="loop-node fixed"><span>② 10년 후 변화</span><strong id="loopResponse"></strong></div><span class="loop-arrow" aria-hidden="true">→</span>
-        <div class="loop-node policy-node"><span>③ 인간의 선택</span><strong id="loopPolicy"></strong></div><span class="loop-arrow" aria-hidden="true">→</span>
-        <label class="loop-node input-node"><span>④ 지구시스템의 변화</span><textarea id="earthEffect" rows="3" maxlength="180" placeholder="예: 습지의 물 저장 능력과 생물 서식 공간이 증가한다."></textarea></label><span class="loop-arrow" aria-hidden="true">→</span>
-        <label class="loop-node input-node"><span>⑤ 다시 돌아온 영향</span><textarea id="returnEffect" rows="3" maxlength="180" placeholder="예: 홍수 피해와 추가 이주 위험이 낮아진다."></textarea></label>
+        <div class="loop-node policy-node"><span>③ 인간의 선택</span><strong id="loopPolicy">설명할 정책을 선택하세요</strong></div><span class="loop-arrow" aria-hidden="true">→</span>
+        <label class="loop-node select-node"><span>④ 지구시스템의 변화</span><select id="earthEffectChoice"><option value="">변화를 선택하세요</option></select></label><span class="loop-arrow" aria-hidden="true">→</span>
+        <label class="loop-node select-node"><span>⑤ 다시 돌아온 영향</span><select id="returnEffectChoice"><option value="">영향을 선택하세요</option></select></label>
         <span class="return-arrow" aria-hidden="true">↶</span>
       </div>
       <div class="loop-reflection">
         <fieldset><legend>이 고리는 어떤 되먹임인가요?</legend><label><input type="radio" name="loopType" value="위험을 완화하는 되먹임"> 위험을 완화한다</label><label><input type="radio" name="loopType" value="위험을 강화하는 되먹임"> 위험을 강화한다</label><label><input type="radio" name="loopType" value="조건에 따라 달라지는 되먹임"> 조건에 따라 달라진다</label></fieldset>
-        <label for="tradeoff">정책으로 새롭게 생길 수 있는 부담이나 불평등</label>
-        <textarea id="tradeoff" rows="3" maxlength="200" placeholder="혜택뿐 아니라 비용, 공간, 생태 또는 특정 집단의 부담을 적으세요."></textarea>
+        <div class="reflection-writing"><label for="finalReflection">예상과 실제 결과, 남아 있는 부담·불평등</label><textarea id="finalReflection" rows="4" maxlength="320" placeholder="예상한 결과와 실제 비교 결과를 연결하고, 비용·공간·생태·불평등 중 남은 한계를 함께 설명하세요."></textarea></div>
       </div>
       <div class="inline-actions end"><span class="micro-status" id="loopHint">빈칸을 모두 완성하세요.</span><button class="primary-btn" id="finishBtn" disabled>개인 결과지 만들기</button></div>
     </section>

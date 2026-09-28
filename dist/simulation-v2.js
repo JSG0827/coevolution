@@ -10,8 +10,8 @@ const scenarios = [
     ],
     chain: ['대기권: 해양 가열', '수권: 해수면·염수', '지권: 침하·염류화', '생물권: 습지·작물', '인간권: 생계·이동'],
     questions: [
-      { q: '해수면 상승과 지반 침하가 동시에 진행될 때 가장 직접적으로 커지는 위험은?', options: ['상대적 해수면 상승과 침수', '화산 분출', '편서풍 약화'], correct: 0, explanation: '육지가 낮아지는 효과와 바다가 높아지는 효과가 합쳐져 상대적 해수면과 침수 위험이 커집니다.' },
-      { q: '습지 면적 감소가 주민의 안전에 영향을 주는 경로로 가장 적절한 것은?', options: ['파랑·홍수 완충 감소', '지구 자전 속도 증가', '태양 복사량 감소'], correct: 0, explanation: '습지는 파랑과 홍수 에너지를 줄이고 물을 저장하므로 감소하면 사람과 생물의 노출이 함께 커집니다.' }
+      { q: '해수면 상승과 지반 침하가 동시에 진행될 때 가장 직접적으로 커지는 위험은?', options: ['연안 퇴적 증가로 육지가 빠르게 높아진다', '상대적 해수면 상승과 침수 위험이 커진다', '해수의 열팽창이 즉시 멈춘다'], correct: 1, explanation: '육지가 낮아지는 효과와 바다가 높아지는 효과가 합쳐져 상대적 해수면과 침수 위험이 커집니다.' },
+      { q: '습지 면적 감소가 주민의 안전에 영향을 주는 경로로 가장 적절한 것은?', options: ['증발산 감소로 모든 계절의 강수량이 늘어난다', '해안의 지반 침하가 즉시 멈춘다', '파랑 에너지와 물 저장 완충이 감소한다'], correct: 2, explanation: '습지는 파랑과 홍수 에너지를 줄이고 물을 저장하므로 감소하면 사람과 생물의 노출이 함께 커집니다.' }
     ],
     policyNames: { restoration: '연안 습지 복원', water: '담수·지하수 순환 관리', food: '내염성 농업 전환', infrastructure: '방조제·고상식 기반시설', culture: '공동체 집단이주' },
     earthLabels: { water: '담수 수질', soil: '토양 생산성', habitat: '습지 서식지', buffer: '홍수 완충 능력' },
@@ -29,8 +29,8 @@ const scenarios = [
     ],
     chain: ['대기권: 강수·기온', '수권: 토양수·지하수', '지권: 표토·침하', '생물권: 식생·작물', '인간권: 식량·이동'],
     questions: [
-      { q: '강수량은 줄고 증발산은 늘 때 토양수분은 일반적으로 어떻게 되는가?', options: ['감소한다', '항상 증가한다', '변하지 않는다'], correct: 0, explanation: '들어오는 물은 줄고 대기로 빠져나가는 물은 늘어 토양과 식물이 사용할 수 있는 물이 감소합니다.' },
-      { q: '지하수를 장기간 과잉 취수할 때 함께 나타날 수 있는 현상은?', options: ['지반 침하와 우물 고갈', '해령 확장', '태양풍 강화'], correct: 0, explanation: '대수층의 압력이 낮아지고 퇴적층이 압밀되면 지반 침하와 취수 비용 증가가 나타날 수 있습니다.' }
+      { q: '강수량은 줄고 증발산은 늘 때 토양수분은 일반적으로 어떻게 되는가?', options: ['강수가 줄어도 기온 상승 때문에 항상 증가한다', '유입 감소와 손실 증가가 겹쳐 감소한다', '토양 종류와 무관하게 일정하게 유지된다'], correct: 1, explanation: '들어오는 물은 줄고 대기로 빠져나가는 물은 늘어 토양과 식물이 사용할 수 있는 물이 감소합니다.' },
+      { q: '지하수를 장기간 과잉 취수할 때 함께 나타날 수 있는 현상은?', options: ['대수층 압력 감소와 지반 침하', '지하수면 상승과 용수 비용 감소', '표토 수분 증가와 식생의 자동 회복'], correct: 0, explanation: '대수층의 압력이 낮아지고 퇴적층이 압밀되면 지반 침하와 취수 비용 증가가 나타날 수 있습니다.' }
     ],
     policyNames: { restoration: '초지·하천변 식생 복원', water: '지하수 총량·빗물 관리', food: '가뭄 적응 농업', infrastructure: '저수·사방 기반시설', culture: '생계 공동체 계획이주' },
     earthLabels: { water: '지하수 가용성', soil: '표토 보전', habitat: '식생 피복', buffer: '가뭄 완충 능력' },
@@ -48,8 +48,8 @@ const scenarios = [
     ],
     chain: ['대기권: 기온·극한강우', '빙권: 적설·빙하', '수권: 계절 유량', '지권: 사면 안정', '생물권·인간권: 서식지·정착'],
     questions: [
-      { q: '적설 기간이 짧아질 때 하류 물 공급에서 나타날 가능성이 큰 변화는?', options: ['봄 유출은 빨라지고 여름 물은 부족해질 수 있다', '연중 완전히 일정해진다', '바닷물 염분이 즉시 감소한다'], correct: 0, explanation: '눈이 일찍 녹으면 봄철 유출이 빨라지고 건기나 여름의 저장 효과가 약해질 수 있습니다.' },
-      { q: '극한강우와 동결·융해 변동이 함께 증가하면 커질 수 있는 위험은?', options: ['산사태와 토석류', '조석 마찰 감소', '오존층 생성'], correct: 0, explanation: '균열이 발달한 사면에 강한 비가 스며들면 사면 안정성이 낮아져 산사태와 토석류 위험이 커집니다.' }
+      { q: '적설 기간이 짧아질 때 하류 물 공급에서 나타날 가능성이 큰 변화는?', options: ['눈 저장량 감소로 여름 유량이 항상 늘어난다', '녹는 시기가 늦어져 봄 유출이 감소한다', '봄 유출은 빨라지고 여름 물은 부족해질 수 있다'], correct: 2, explanation: '눈이 일찍 녹으면 봄철 유출이 빨라지고 건기나 여름의 저장 효과가 약해질 수 있습니다.' },
+      { q: '극한강우와 동결·융해 변동이 함께 증가하면 커질 수 있는 위험은?', options: ['빙하 면적이 회복되어 사면이 안정된다', '균열 사면의 산사태와 토석류', '강우가 지표에 닿기 전에 모두 증발한다'], correct: 1, explanation: '균열이 발달한 사면에 강한 비가 스며들면 사면 안정성이 낮아져 산사태와 토석류 위험이 커집니다.' }
     ],
     policyNames: { restoration: '고산식생·하천변 복원', water: '계절 물저장·유량 관리', food: '고산 생계 다변화', infrastructure: '사면보강·피난 기반시설', culture: '산촌 공동체 계획이주' },
     earthLabels: { water: '계절 유량 안정', soil: '사면 안정성', habitat: '고산 서식지', buffer: '재해 완충 능력' },
@@ -67,8 +67,8 @@ const scenarios = [
     ],
     chain: ['대기권: 고온·건조·강풍', '수권: 토양수분 감소', '생물권: 산림·연료', '지권: 화재 후 침식', '인간권: 연기·대피·이동'],
     questions: [
-      { q: '고온일 증가와 토양수분 감소가 산불 위험을 높이는 주된 이유는?', options: ['식생 연료가 더 쉽게 건조된다', '지구 자기장이 사라진다', '해수면이 즉시 낮아진다'], correct: 0, explanation: '식생과 낙엽의 수분이 줄면 점화와 확산이 쉬워지고 강풍이 겹칠 때 위험이 더 커집니다.' },
-      { q: '대형 산불 직후 집중호우가 내리면 커질 수 있는 2차 재해는?', options: ['토석류와 하천 탁도 증가', '빙하 확장', '조석 정지'], correct: 0, explanation: '식생과 토양 구조가 손상된 사면은 물을 덜 흡수해 토석류와 침식, 수질 악화가 발생하기 쉽습니다.' }
+      { q: '고온일 증가와 토양수분 감소가 산불 위험을 높이는 주된 이유는?', options: ['토양수분 감소가 강풍을 완전히 막는다', '고온이 식생의 수분을 늘려 점화를 늦춘다', '식생 연료가 더 쉽게 건조되어 점화·확산이 빨라진다'], correct: 2, explanation: '식생과 낙엽의 수분이 줄면 점화와 확산이 쉬워지고 강풍이 겹칠 때 위험이 더 커집니다.' },
+      { q: '대형 산불 직후 집중호우가 내리면 커질 수 있는 2차 재해는?', options: ['식생 손실로 토석류와 하천 탁도가 증가한다', '재가 토양 공극을 늘려 모든 빗물을 흡수한다', '지표 냉각으로 산림 연결성이 즉시 회복된다'], correct: 0, explanation: '식생과 토양 구조가 손상된 사면은 물을 덜 흡수해 토석류와 침식, 수질 악화가 발생하기 쉽습니다.' }
     ],
     policyNames: { restoration: '내화성 산림·하천 복원', water: '토양수분·소방용수 관리', food: '산림 생계 다변화', infrastructure: '방화대·내화 주거 기반시설', culture: '산촌 공동체 계획이주' },
     earthLabels: { water: '토양 수분', soil: '침식 저항성', habitat: '산림 연결성', buffer: '산불·탄소 완충' },
@@ -121,8 +121,10 @@ const profiles = [
 ];
 const cohortTemplates = [[320, 300, 220, 210, 150], [180, 200, 360, 210, 250], [150, 180, 180, 450, 240], [240, 240, 240, 240, 240], [220, 350, 260, 180, 190], [280, 160, 300, 260, 200]];
 const needNames = { housing: '주거 안정', health: '건강·돌봄', livelihood: '생계·접근', participation: '정책 참여', culture: '문화·공동체' };
+const policyCategoryMap = { housing: 'space', compact: 'space', culture: 'space', food: 'life', jobs: 'life', mobility: 'life', care: 'care', council: 'care', restoration: 'earth', water: 'earth', infrastructure: 'safety', warning: 'safety', microgrid: 'safety' };
+const policyCategories = { all: '전체', space: '주거·공간', life: '생계·접근', earth: '생태·물', safety: '방재·에너지', care: '돌봄·참여' };
 
-const state = { studentId: '', seed: 0, scenario: null, cohort: [], envAnswers: [], envReviewed: false, selected: [], reasons: {}, initialNeeds: {}, initialSettled: 0, initialFit: 0, event: null, eventScore: 0, addedPolicy: null, eventReason: '', finalNeeds: {}, finalEarth: {}, population: {}, loop: {} };
+const state = { studentId: '', seed: 0, scenario: null, cohort: [], envQuestions: [], envAnswers: [], envReviewed: false, selected: [], strategyReason: '', initialNeeds: {}, initialSettled: 0, initialFit: 0, event: null, eventScore: 0, addedPolicy: null, eventReason: '', baselineNeeds: {}, baselineEarth: {}, baselinePopulation: {}, finalNeeds: {}, finalEarth: {}, population: {}, loopPolicy: null, loop: {} };
 const $ = (selector) => document.querySelector(selector);
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const hashText = (text) => [...String(text)].reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) | 0, 17) >>> 0;
@@ -131,11 +133,18 @@ const getPolicy = (id) => policies.find((policy) => policy.id === id);
 const policyName = (id) => state.scenario.policyNames[id] || getPolicy(id).name;
 const policyDescription = (id) => getPolicy(id).desc;
 const noise = (key) => ((hashText(`${state.studentId}-${key}`) % 401) / 100) - 2;
-const screenSteps = { introScreen: 0, environmentScreen: 1, policyScreen: 2, reasonScreen: 3, revealScreen: 4, eventScreen: 5, outcomeScreen: 6, loopScreen: 7, reportScreen: 7 };
+const needStatus = (value) => value >= 70 ? { label: '충분', className: 'good' } : value >= 50 ? { label: '보완 필요', className: 'watch' } : { label: '우선 지원', className: 'risk' };
+const changeStatus = (delta) => delta >= 6 ? { label: '뚜렷하게 개선', className: 'good', symbol: '▲' } : delta >= 2 ? { label: '개선', className: 'good', symbol: '▲' } : delta <= -6 ? { label: '크게 악화', className: 'risk', symbol: '▼' } : delta <= -2 ? { label: '악화', className: 'risk', symbol: '▼' } : { label: '비슷함', className: 'steady', symbol: '―' };
+const earthStatus = (value) => value >= 106 ? { label: '회복', className: 'good' } : value >= 95 ? { label: '기준과 비슷', className: 'steady' } : { label: '악화', className: 'risk' };
+const riskLevel = (value, max = 12) => { const ratio = value / max; return ratio >= .78 ? '매우 높음' : ratio >= .58 ? '높음' : ratio >= .38 ? '보통' : '낮음'; };
+const responseLevel = (value) => value >= 8 ? '빠르게 대응 가능' : value >= 5 ? '대응 가능' : '대응 역량 부족';
+const screenSteps = { introScreen: 0, environmentScreen: 1, policyScreen: 2, eventScreen: 3, outcomeScreen: 4, loopScreen: 5, reportScreen: 5 };
 let toastTimer;
+let activePolicyFilter = 'all';
+let activeEventFilter = 'direct';
 
 function renderProgress(step = 0) {
-  $('#progressHud').innerHTML = Array.from({ length: 7 }, (_, index) => {
+  $('#progressHud').innerHTML = Array.from({ length: 5 }, (_, index) => {
     const number = index + 1;
     const status = number < step ? 'done' : number === step ? 'current' : '';
     return `<span class="progress-segment ${status}" title="${number}단계" aria-label="${number}단계 ${status === 'done' ? '완료' : status === 'current' ? '진행 중' : '대기'}"></span>`;
@@ -179,6 +188,8 @@ function setDrawer(open) {
 }
 
 function showScreen(id, label) {
+  clearTimeout(toastTimer);
+  $('#gameToast').classList.remove('show');
   document.querySelectorAll('.screen').forEach((screen) => screen.classList.toggle('active', screen.id === id));
   $('#stepPill').textContent = label;
   renderProgress(screenSteps[id]);
@@ -196,7 +207,7 @@ function begin() {
   state.scenario = scenarios[state.seed % scenarios.length];
   state.cohort = cohortTemplates[Math.floor(state.seed / scenarios.length) % cohortTemplates.length];
   renderEnvironment();
-  showScreen('environmentScreen', '1 / 7 · 환경 자료');
+  showScreen('environmentScreen', '1 / 5 · 환경 관측');
 }
 
 function renderEnvironment() {
@@ -205,12 +216,20 @@ function renderEnvironment() {
   $('#scenarioBadge').textContent = s.type;
   $('#indicatorGrid').innerHTML = s.indicators.map((item) => `<article class="indicator-card" style="--accent:${item.color}"><span>${item.label}</span><strong>${item.value}</strong><small>${item.note}</small></article>`).join('');
   $('#systemChain').innerHTML = s.chain.map((item, index) => `${index ? '<span class="system-link" aria-hidden="true">→</span>' : ''}<span class="system-chip">${item}</span>`).join('');
-  $('#questionGrid').innerHTML = s.questions.map((question, qIndex) => `<article class="question-card"><fieldset><legend>${qIndex + 1}. ${question.q}</legend>${question.options.map((option, oIndex) => `<label><input type="radio" name="env-q${qIndex}" value="${oIndex}"> ${option}</label>`).join('')}</fieldset></article>`).join('');
+  state.envQuestions = s.questions.map((question, qIndex) => {
+    const target = (state.seed + qIndex) % question.options.length;
+    const distractors = question.options.map((_, index) => index).filter((index) => index !== question.correct);
+    if (hashText(`${state.studentId}-distractors-${qIndex}`) % 2) distractors.reverse();
+    let distractorIndex = 0;
+    const order = question.options.map((_, index) => index === target ? question.correct : distractors[distractorIndex++]);
+    return { ...question, options: order.map((index) => question.options[index]), correct: target };
+  });
+  $('#questionGrid').innerHTML = state.envQuestions.map((question, qIndex) => `<article class="question-card"><fieldset><legend>${qIndex + 1}. ${question.q}</legend>${question.options.map((option, oIndex) => `<label><input type="radio" name="env-q${qIndex}" value="${oIndex}"> ${option}</label>`).join('')}</fieldset></article>`).join('');
   document.querySelectorAll('#questionGrid input').forEach((input) => input.addEventListener('change', validateEnvironment));
 }
 
 function validateEnvironment() {
-  state.envAnswers = state.scenario.questions.map((_, index) => document.querySelector(`input[name="env-q${index}"]:checked`)?.value ?? null);
+  state.envAnswers = state.envQuestions.map((_, index) => document.querySelector(`input[name="env-q${index}"]:checked`)?.value ?? null);
   const ready = state.envAnswers.every((answer) => answer !== null);
   $('#confirmEnvironmentBtn').disabled = !ready;
   $('#environmentHint').textContent = ready ? '선택한 답의 해설을 확인하세요.' : '두 문항에 답하세요.';
@@ -218,50 +237,93 @@ function validateEnvironment() {
 
 function confirmEnvironment() {
   if (!state.envReviewed) {
-    const correct = state.scenario.questions.reduce((count, question, index) => count + (Number(state.envAnswers[index]) === question.correct ? 1 : 0), 0);
+    const correct = state.envQuestions.reduce((count, question, index) => count + (Number(state.envAnswers[index]) === question.correct ? 1 : 0), 0);
     $('#environmentFeedback').classList.remove('hidden');
-    $('#environmentFeedback').innerHTML = `<strong>자료 해석 ${correct} / ${state.scenario.questions.length}</strong><p>${state.scenario.questions.map((question) => question.explanation).join(' ')}</p>`;
+    $('#environmentFeedback').innerHTML = `<strong>자료 해석 ${correct} / ${state.envQuestions.length}</strong><p>${state.envQuestions.map((question) => question.explanation).join(' ')}</p>`;
     document.querySelectorAll('#questionGrid input').forEach((input) => { input.disabled = true; });
     state.envReviewed = true;
     $('#confirmEnvironmentBtn').textContent = '정책 선택으로 이동';
     $('#environmentHint').textContent = '관측 근거를 기억하고 정책을 선택하세요.';
     return;
   }
-  renderPolicies('#policyGrid', policies);
-  showScreen('policyScreen', '2 / 7 · 정책 선택');
+  renderInitialPolicyWorkspace();
+  showScreen('policyScreen', '2 / 5 · 정착 전략');
 }
 
-function policyCard(policy, selected = false) {
-  return `<button class="policy-card${selected ? ' selected' : ''}" type="button" data-policy="${policy.id}" aria-pressed="${selected}"><span class="policy-icon" aria-hidden="true">${policy.icon}</span><h3>${policyName(policy.id)}</h3><p>${policyDescription(policy.id)}</p><span class="policy-effects">${policy.effects.map((effect) => `<span>${effect}</span>`).join('')}</span></button>`;
+function policyCard(policy, selected = false, mode = 'initial') {
+  const category = mode === 'event' ? eventPolicyGroup(policy) : policyCategoryMap[policy.id];
+  const categoryLabel = mode === 'event' ? eventGroupLabel(category) : policyCategories[category];
+  const benefit = policy.effects[0];
+  const burden = policy.effects[policy.effects.length - 1];
+  return `<article class="policy-card compact-policy-card${selected ? ' selected' : ''}" data-policy="${policy.id}"><button class="policy-select-btn" type="button" aria-pressed="${selected}"><span class="policy-icon" aria-hidden="true">${policy.icon}</span><span class="policy-card-copy"><small>${categoryLabel}</small><strong>${policyName(policy.id)}</strong><span class="quick-effects"><em>${benefit}</em><em class="burden">${burden}</em></span></span></button><button class="policy-detail-toggle" type="button" aria-expanded="false">자세히</button><div class="policy-detail hidden"><p>${policyDescription(policy.id)}</p><span class="policy-effects">${policy.effects.map((effect) => `<span>${effect}</span>`).join('')}</span></div></article>`;
 }
 
-function renderPolicies(target, list) {
-  $(target).innerHTML = list.map((policy) => policyCard(policy, target === '#policyGrid' ? state.selected.includes(policy.id) : policy.id === state.addedPolicy)).join('');
-  document.querySelectorAll(`${target} .policy-card`).forEach((card) => card.addEventListener('click', () => target === '#policyGrid' ? toggleInitialPolicy(card) : toggleAddedPolicy(card)));
+function renderPolicies(target, list, mode = target === '#eventPolicyGrid' ? 'event' : 'initial') {
+  $(target).innerHTML = list.map((policy) => policyCard(policy, mode === 'initial' ? state.selected.includes(policy.id) : policy.id === state.addedPolicy, mode)).join('');
+  document.querySelectorAll(`${target} .policy-select-btn`).forEach((button) => button.addEventListener('click', () => {
+    const card = button.closest('.policy-card');
+    mode === 'initial' ? toggleInitialPolicy(card) : toggleAddedPolicy(card);
+  }));
+  document.querySelectorAll(`${target} .policy-detail-toggle`).forEach((button) => button.addEventListener('click', () => {
+    const detail = button.nextElementSibling;
+    const open = detail.classList.toggle('hidden') === false;
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? '접기' : '자세히';
+  }));
+}
+
+function renderInitialPolicyWorkspace() {
+  $('#policyFilters').innerHTML = Object.entries(policyCategories).map(([key, label]) => `<button type="button" class="filter-chip${activePolicyFilter === key ? ' active' : ''}" data-policy-filter="${key}">${label}${key === 'all' ? ` ${policies.length}` : ` ${policies.filter((policy) => policyCategoryMap[policy.id] === key).length}`}</button>`).join('');
+  document.querySelectorAll('[data-policy-filter]').forEach((button) => button.addEventListener('click', () => {
+    activePolicyFilter = button.dataset.policyFilter;
+    renderInitialPolicyWorkspace();
+  }));
+  const visible = activePolicyFilter === 'all' ? policies : policies.filter((policy) => policyCategoryMap[policy.id] === activePolicyFilter);
+  renderPolicies('#policyGrid', visible, 'initial');
+  updateStrategyTray();
+  validateStrategy();
 }
 
 function toggleInitialPolicy(card) {
   const id = card.dataset.policy;
   const selected = state.selected.includes(id);
-  if (!selected && state.selected.length >= 3) return;
+  if (!selected && state.selected.length >= 3) { showToast('정책은 세 개까지 선택할 수 있습니다.'); return; }
   state.selected = selected ? state.selected.filter((item) => item !== id) : [...state.selected, id];
-  document.querySelectorAll('#policyGrid .policy-card').forEach((item) => { const active = state.selected.includes(item.dataset.policy); item.classList.toggle('selected', active); item.setAttribute('aria-pressed', String(active)); });
+  document.querySelectorAll('#policyGrid .policy-card').forEach((item) => {
+    const active = state.selected.includes(item.dataset.policy);
+    item.classList.toggle('selected', active);
+    item.querySelector('.policy-select-btn').setAttribute('aria-pressed', String(active));
+  });
   $('#selectedCount').textContent = state.selected.length;
-  $('#confirmPolicyBtn').disabled = state.selected.length !== 3;
-  $('#policyHint').textContent = state.selected.length === 3 ? '환경 자료와 연결해 선택 근거를 작성하세요.' : `정책을 ${3 - state.selected.length}개 더 선택하세요.`;
+  updateStrategyTray();
+  validateStrategy();
   updateDecisionLog();
   showToast(selected ? `${policyName(id)} 선택 해제` : `${policyName(id)} 선택`);
 }
 
-function renderReasons() {
-  $('#reasonGrid').innerHTML = state.selected.map((id) => `<article class="reason-card"><span class="policy-icon" aria-hidden="true">${getPolicy(id).icon}</span><h3>${policyName(id)}</h3><p>${policyDescription(id)}</p><label for="reason-${id}">환경 자료와 연결한 선택 이유·한계</label><textarea id="reason-${id}" data-reason="${id}" rows="5" maxlength="240" placeholder="관측 지표, 예상 효과, 한계를 함께 적으세요.">${escapeHtml(state.reasons[id] || '')}</textarea></article>`).join('');
-  document.querySelectorAll('[data-reason]').forEach((area) => area.addEventListener('input', validateReasons));
-  validateReasons();
+function coverageStatus(value, strong, partial) {
+  return value >= strong ? { label: '확보', className: 'good' } : value >= partial ? { label: '일부', className: 'watch' } : { label: '부족', className: 'risk' };
 }
 
-function validateReasons() {
-  document.querySelectorAll('[data-reason]').forEach((area) => { state.reasons[area.dataset.reason] = area.value.trim(); });
-  $('#runSimulationBtn').disabled = !state.selected.every((id) => (state.reasons[id] || '').length >= 8);
+function updateStrategyTray() {
+  $('#selectedStrategyTray').innerHTML = state.selected.length ? state.selected.map((id) => `<div class="tray-policy"><span aria-hidden="true">${getPolicy(id).icon}</span><strong>${policyName(id)}</strong><button type="button" data-remove-policy="${id}" aria-label="${policyName(id)} 선택 해제">×</button></div>`).join('') : '<p class="tray-empty">정책 카드를 선택하면 여기에 모입니다.</p>';
+  document.querySelectorAll('[data-remove-policy]').forEach((button) => button.addEventListener('click', () => toggleInitialPolicy({ dataset: { policy: button.dataset.removePolicy } })));
+  const chosen = state.selected.map(getPolicy);
+  const capacity = chosen.reduce((sum, policy) => sum + policy.capacity, 0);
+  const life = chosen.reduce((sum, policy) => sum + policy.needs.health + policy.needs.livelihood, 0);
+  const earth = chosen.reduce((sum, policy) => sum + Object.values(policy.earth).reduce((a, b) => a + b, 0), 0);
+  const response = chosen.reduce((sum, policy) => sum + policy.response, 0);
+  const community = chosen.reduce((sum, policy) => sum + policy.needs.participation + policy.needs.culture, 0);
+  const diagnostics = [['정착 공간', coverageStatus(capacity, 500, 250)], ['생활 지원', coverageStatus(life, 15, 8)], ['지구시스템', coverageStatus(earth, 14, 6)], ['재난 대응', coverageStatus(response, 7, 3)], ['참여·공동체', coverageStatus(community, 12, 5)]];
+  $('#coverageDiagnostic').innerHTML = diagnostics.map(([label, status]) => `<span class="coverage-chip ${status.className}"><b>${label}</b>${status.label}</span>`).join('');
+}
+
+function validateStrategy() {
+  state.strategyReason = $('#strategyReason').value.trim();
+  const policiesReady = state.selected.length === 3;
+  const reasonReady = state.strategyReason.length >= 15;
+  $('#confirmPolicyBtn').disabled = !(policiesReady && reasonReady);
+  $('#policyHint').textContent = !policiesReady ? `정책을 ${3 - state.selected.length}개 더 선택하세요.` : !reasonReady ? '관측 자료와 연결한 전략을 한 문장으로 작성하세요.' : '정착 전략이 완성되었습니다.';
 }
 
 function calculateNeeds(policyIds) {
@@ -281,25 +343,20 @@ function calculateFit(policyIds) {
 
 function needBars(needs, prior = null) {
   return Object.entries(needNames).map(([key, label]) => {
-    const delta = prior ? needs[key] - prior[key] : null;
-    return `<div class="metric-row"><div class="metric-label"><span>${label}</span><span>${needs[key]}${delta === null ? '' : ` (${delta > 0 ? '+' : ''}${delta})`}</span></div><div class="metric-track"><div class="metric-fill" style="width:${needs[key]}%"></div></div></div>`;
+    const status = needStatus(needs[key]);
+    return `<div class="metric-row"><div class="metric-label"><span>${label}</span><span class="status-badge ${status.className}">${status.label}</span></div><div class="metric-track" aria-label="${label} ${status.label}"><div class="metric-fill ${status.className}" style="width:${needs[key]}%"></div></div></div>`;
   }).join('');
 }
 
-function renderReveal() {
+function prepareInitialSettlement() {
   state.initialNeeds = calculateNeeds(state.selected);
   state.initialSettled = clamp(180 + state.selected.reduce((sum, id) => sum + getPolicy(id).capacity, 0), 0, 1200);
   state.initialFit = Math.round((Object.values(state.initialNeeds).reduce((a, b) => a + b, 0) / 5) * 0.6 + calculateFit(state.selected) * 0.4);
   const topRisk = Object.entries(state.scenario.baseRisks).sort((a, b) => b[1] - a[1])[0];
-  $('#resultHero').innerHTML = `<div class="result-stat"><span>안전 정착 수용력</span><strong>${state.initialSettled.toLocaleString()}명</strong><small>전체 이동 필요 인구 1,200명</small></div><div class="result-stat"><span>평균 필요 충족도</span><strong>${state.initialFit}점</strong><small>주민 구성과 정책 조합 반영</small></div><div class="result-stat"><span>현재 가장 큰 환경 위험</span><strong>${hazardName(topRisk[0])}</strong><small>정책 적용 전 기초 위험 ${topRisk[1]} / 10</small></div>`;
-  $('#profileList').innerHTML = profiles.map((profile, index) => {
-    const best = [...state.selected].sort((a, b) => (profile.prefs[b] || 0) - (profile.prefs[a] || 0))[0];
-    const fit = best && (profile.prefs[best] || 0) >= 3 ? `${policyName(best)}과 핵심 필요가 연결됨` : '핵심 필요를 직접 지원하는 정책이 부족함';
-    return `<div class="profile-row"><strong>${profile.name}</strong><span>${state.cohort[index].toLocaleString()}명</span><small>${profile.need} · ${fit}</small></div>`;
-  }).join('');
-  $('#metricList').innerHTML = needBars(state.initialNeeds);
+  const strongestNeed = Object.entries(state.initialNeeds).sort((a, b) => b[1] - a[1])[0];
   const lowest = Object.entries(state.initialNeeds).sort((a, b) => a[1] - b[1])[0];
-  $('#initialInsight').innerHTML = `<strong>정착 직후의 다음 과제: ${needNames[lowest[0]]}</strong><p>${state.initialSettled < 1200 ? `${(1200 - state.initialSettled).toLocaleString()}명에게는 아직 안전한 정착 공간이 부족합니다.` : '1,200명을 수용할 기본 공간을 확보했습니다.'} 그러나 수용력과 필요 충족은 같은 뜻이 아닙니다.</p>`;
+  const largestCohortIndex = state.cohort.indexOf(Math.max(...state.cohort));
+  $('#settlementSnapshot').innerHTML = `<div class="snapshot-title"><span>2045 정착 전략 결과</span><strong>${state.selected.map(policyName).join(' · ')}</strong></div><div class="snapshot-grid"><div><span>초기 수용</span><strong>${state.initialSettled.toLocaleString()}명</strong></div><div><span>가장 잘 지원</span><strong>${needNames[strongestNeed[0]]}</strong></div><div><span>먼저 보완</span><strong>${needNames[lowest[0]]}</strong></div><div><span>가장 큰 주민 집단</span><strong>${profiles[largestCohortIndex].name}</strong></div><div><span>계속 관찰</span><strong>${hazardName(topRisk[0])} · ${riskLevel(topRisk[1], 10)}</strong></div></div>`;
 }
 
 function hazardName(key) {
@@ -317,20 +374,39 @@ function chooseEvent() {
   state.eventScore = clamp(candidates[0].score, 2, 12);
 }
 
+function eventPolicyGroup(policy) {
+  if ((policy.risk[state.event.hazard] || 0) < 0) return 'direct';
+  if (policy.response >= 3 || policy.needs.health >= 3 || policy.needs.participation >= 3) return 'recovery';
+  return 'other';
+}
+
+function eventGroupLabel(group) {
+  return ({ direct: '위험 직접 완충', recovery: '피해·회복 지원', other: '다른 접근' })[group];
+}
+
+function renderEventPolicyFilters() {
+  const available = policies.filter((policy) => !state.selected.includes(policy.id));
+  const groups = ['direct', 'recovery', 'other'];
+  if (!available.some((policy) => eventPolicyGroup(policy) === activeEventFilter)) activeEventFilter = groups.find((group) => available.some((policy) => eventPolicyGroup(policy) === group)) || 'other';
+  $('#eventPolicyFilters').innerHTML = groups.map((group) => { const count = available.filter((policy) => eventPolicyGroup(policy) === group).length; return `<button type="button" class="filter-chip${activeEventFilter === group ? ' active' : ''}" data-event-filter="${group}" ${count ? '' : 'disabled'}>${eventGroupLabel(group)} ${count}</button>`; }).join('');
+  document.querySelectorAll('[data-event-filter]').forEach((button) => button.addEventListener('click', () => { activeEventFilter = button.dataset.eventFilter; renderEventPolicyFilters(); }));
+  renderPolicies('#eventPolicyGrid', available.filter((policy) => eventPolicyGroup(policy) === activeEventFilter), 'event');
+}
+
 function renderEvent() {
   chooseEvent();
   const e = state.event;
   const indicators = e.causes.map((key) => state.scenario.indicators.find((item) => item.key === key)).filter(Boolean);
   const reducers = state.selected.filter((id) => (getPolicy(id).risk[e.hazard] || 0) < 0);
   const amplifiers = state.selected.filter((id) => (getPolicy(id).risk[e.hazard] || 0) > 0);
-  $('#eventBanner').innerHTML = `<span>2055년 · ${state.scenario.name}</span><h2>${e.title}</h2><p>${e.desc}</p><div class="event-causes">${indicators.map((item) => `<span>${item.label} ${item.value}</span>`).join('')}<span>잔여 위험 ${state.eventScore.toFixed(1)} / 12</span>${reducers.map((id) => `<span>${policyName(id)}이 일부 완충</span>`).join('')}${amplifiers.map((id) => `<span>${policyName(id)}의 부작용이 위험 가중</span>`).join('')}</div>`;
-  renderPolicies('#eventPolicyGrid', policies.filter((policy) => !state.selected.includes(policy.id)));
+  $('#eventBanner').innerHTML = `<span>2055년 · ${state.scenario.name}</span><h2>${e.title}</h2><p>${e.desc}</p><div class="event-causes">${indicators.map((item) => `<span>${item.label} ${item.value}</span>`).join('')}<span class="risk-tag">잔여 위험 ${riskLevel(state.eventScore)}</span>${reducers.map((id) => `<span>${policyName(id)}이 일부 완충</span>`).join('')}${amplifiers.map((id) => `<span>${policyName(id)}의 부작용이 위험 가중</span>`).join('')}</div>`;
+  renderEventPolicyFilters();
   updateDecisionLog();
 }
 
 function toggleAddedPolicy(card) {
   state.addedPolicy = card.dataset.policy;
-  document.querySelectorAll('#eventPolicyGrid .policy-card').forEach((item) => { const active = item.dataset.policy === state.addedPolicy; item.classList.toggle('selected', active); item.setAttribute('aria-pressed', String(active)); });
+  document.querySelectorAll('#eventPolicyGrid .policy-card').forEach((item) => { const active = item.dataset.policy === state.addedPolicy; item.classList.toggle('selected', active); item.querySelector('.policy-select-btn').setAttribute('aria-pressed', String(active)); });
   $('#addedCount').textContent = '1';
   updateDecisionLog();
   showToast(`${policyName(state.addedPolicy)} 대응 정책 선택`);
@@ -344,40 +420,70 @@ function validateEvent() {
   $('#eventHint').textContent = !state.addedPolicy ? '정책을 한 가지 선택하세요.' : state.eventReason.length < 10 ? '사건의 원인과 정책 효과를 한 문장으로 연결하세요.' : '10년 후 최종 결과를 계산할 준비가 되었습니다.';
 }
 
-function calculateOutcome() {
+function calculateOutcomeFor(policyIds, addedPolicyId = null) {
   const e = state.event;
-  const added = getPolicy(state.addedPolicy);
-  const all = [...state.selected, state.addedPolicy];
-  const mitigation = Math.max(0, -all.reduce((sum, id) => sum + (getPolicy(id).risk[e.hazard] || 0), 0));
-  const response = all.reduce((sum, id) => sum + getPolicy(id).response, 0);
-  const finalSeverity = clamp(state.eventScore + (added.risk[e.hazard] || 0), 1, 12);
-  const finalCapacity = clamp(state.initialSettled + Math.round(added.capacity * 0.78) + (added.risk[e.hazard] < 0 ? 35 : 0), 0, 1200);
+  const added = addedPolicyId ? getPolicy(addedPolicyId) : null;
+  const mitigation = Math.max(0, -policyIds.reduce((sum, id) => sum + (getPolicy(id).risk[e.hazard] || 0), 0));
+  const response = policyIds.reduce((sum, id) => sum + getPolicy(id).response, 0);
+  const addedRisk = added ? (added.risk[e.hazard] || 0) : 0;
+  const finalSeverity = clamp(state.eventScore + addedRisk, 1, 12);
+  const finalCapacity = clamp(state.initialSettled + (added ? Math.round(added.capacity * 0.78) + (addedRisk < 0 ? 35 : 0) : 0), 0, 1200);
   let secondary = Math.round(finalCapacity * clamp(0.055 + finalSeverity * 0.017 - response * 0.006, 0.025, 0.28));
   let atRisk = Math.round(finalCapacity * clamp(0.11 + finalSeverity * 0.012 - mitigation * 0.006, 0.05, 0.27));
   if (secondary + atRisk > finalCapacity * 0.62) atRisk = Math.round(finalCapacity * 0.62) - secondary;
   const waiting = 1200 - finalCapacity;
   const stable = finalCapacity - secondary - atRisk;
-  state.population = { stable, atRisk, secondary, waiting };
 
-  state.finalNeeds = { ...state.initialNeeds };
-  Object.keys(state.finalNeeds).forEach((key) => {
+  const needs = { ...state.initialNeeds };
+  Object.keys(needs).forEach((key) => {
     const eventLoss = e.needs[key] || 0;
     const softened = Math.min(0, eventLoss + Math.round(mitigation * 0.55 + response * 0.25));
-    state.finalNeeds[key] = clamp(Math.round(state.initialNeeds[key] + added.needs[key] * 6 + softened), 0, 100);
+    needs[key] = clamp(Math.round(state.initialNeeds[key] + (added ? added.needs[key] * 6 : 0) + softened), 0, 100);
   });
-  state.finalFit = Math.round((Object.values(state.finalNeeds).reduce((a, b) => a + b, 0) / 5) * 0.65 + calculateFit(all) * 0.35);
 
-  state.finalEarth = {};
+  const earth = {};
   Object.keys(state.scenario.earthLabels).forEach((key) => {
-    const policyEffect = all.reduce((sum, id) => sum + getPolicy(id).earth[key] * 2, 0);
-    state.finalEarth[key] = clamp(Math.round(100 + state.scenario.naturalTrend[key] + policyEffect + (e.earth[key] || 0)), 35, 145);
+    const policyEffect = policyIds.reduce((sum, id) => sum + getPolicy(id).earth[key] * 2, 0);
+    earth[key] = clamp(Math.round(100 + state.scenario.naturalTrend[key] + policyEffect + (e.earth[key] || 0)), 35, 145);
   });
-  state.outcomeMeta = { mitigation, response, finalSeverity };
+  return { population: { stable, atRisk, secondary, waiting }, needs, earth, meta: { mitigation, response, finalSeverity } };
+}
+
+function calculateOutcome() {
+  const baseline = calculateOutcomeFor(state.selected);
+  const chosen = calculateOutcomeFor([...state.selected, state.addedPolicy], state.addedPolicy);
+  state.baselinePopulation = baseline.population;
+  state.baselineNeeds = baseline.needs;
+  state.baselineEarth = baseline.earth;
+  state.population = chosen.population;
+  state.finalNeeds = chosen.needs;
+  state.finalEarth = chosen.earth;
+  state.finalFit = Math.round((Object.values(state.finalNeeds).reduce((a, b) => a + b, 0) / 5) * 0.65 + calculateFit([...state.selected, state.addedPolicy]) * 0.35);
+  state.outcomeMeta = chosen.meta;
 }
 
 function renderOutcome() {
   calculateOutcome();
   const p = state.population;
+  const baseline = state.baselinePopulation;
+  const stableDelta = p.stable - baseline.stable;
+  const secondaryDelta = baseline.secondary - p.secondary;
+  const impactText = (value, positiveWord, negativeWord) => value > 0 ? `${Math.abs(value).toLocaleString()}명 ${positiveWord}` : value < 0 ? `${Math.abs(value).toLocaleString()}명 ${negativeWord}` : '변화 없음';
+  const impactClass = (value) => value > 0 ? 'good' : value < 0 ? 'risk' : 'steady';
+  const responseInsights = [
+    ...Object.entries(needNames).map(([key, label]) => ({ kind: '주민 필요', label, delta: state.finalNeeds[key] - state.baselineNeeds[key], status: needStatus(state.finalNeeds[key]) })),
+    ...Object.entries(state.scenario.earthLabels).map(([key, label]) => ({ kind: '지구시스템', label, delta: state.finalEarth[key] - state.baselineEarth[key], status: earthStatus(state.finalEarth[key]) }))
+  ];
+  const strongestImprovement = [...responseInsights].sort((a, b) => b.delta - a.delta)[0];
+  const remainingRisks = [
+    ...Object.entries(needNames).map(([key, label]) => ({ kind: '주민 필요', label, gap: Math.max(0, 70 - state.finalNeeds[key]), status: needStatus(state.finalNeeds[key]), change: changeStatus(state.finalNeeds[key] - state.initialNeeds[key]) })),
+    ...Object.entries(state.scenario.earthLabels).map(([key, label]) => ({ kind: '지구시스템', label, gap: Math.max(0, 100 - state.finalEarth[key]), status: earthStatus(state.finalEarth[key]), change: changeStatus(state.finalEarth[key] - 100) }))
+  ];
+  const mainRemainingRisk = [...remainingRisks].sort((a, b) => b.gap - a.gap)[0];
+  $('#comparisonPolicyLabel').textContent = `${policyName(state.addedPolicy)} 적용 효과`;
+  $('#responseComparison').innerHTML = `<article class="counterfactual-card highlight-card people"><span>주민 결과</span><strong class="highlight-value">안정 정착 ${p.stable.toLocaleString()}명</strong><p>추가 대응이 없을 때보다 ${impactText(stableDelta, '증가', '감소')} · 2차 이동 ${p.secondary.toLocaleString()}명</p><b class="impact-badge ${impactClass(stableDelta)}">${stableDelta >= 0 ? '▲' : '▼'} ${Math.abs(stableDelta).toLocaleString()}명</b></article>
+  <article class="counterfactual-card highlight-card improvement"><span>가장 큰 개선</span><strong class="highlight-value">${strongestImprovement.label}</strong><p>${strongestImprovement.kind} · 현재 ${strongestImprovement.status.label}</p><b class="impact-badge ${impactClass(strongestImprovement.delta)}">${strongestImprovement.delta > 0 ? '▲ 추가 대응으로 개선' : strongestImprovement.delta < 0 ? '▼ 추가 부담' : '― 직접 변화 없음'}</b></article>
+  <article class="counterfactual-card highlight-card remaining"><span>가장 중요한 남은 문제</span><strong class="highlight-value">${mainRemainingRisk.label}</strong><p>${mainRemainingRisk.kind} · 현재 ${mainRemainingRisk.status.label}</p><b class="impact-badge ${mainRemainingRisk.status.className}">${mainRemainingRisk.change.symbol} ${mainRemainingRisk.change.label}</b></article>`;
   $('#populationFlow').innerHTML = [
     ['안정 정착', p.stable, '주거와 서비스가 유지됨', '#33856f'],
     ['위험 노출', p.atRisk, '정착했지만 다음 충격에 취약', '#d2a23f'],
@@ -387,52 +493,95 @@ function renderOutcome() {
   $('#populationBar').innerHTML = [
     ['안정 정착', p.stable, '#33856f'], ['위험 노출', p.atRisk, '#d2a23f'], ['2차 이동', p.secondary, '#d86855'], ['정착 대기', p.waiting, '#75878a']
   ].map(([label, value, color]) => `<span class="population-segment" style="width:${Number(value) / 12}%;background:${color}" title="${label} ${Number(value).toLocaleString()}명"></span>`).join('');
-  $('#finalNeeds').innerHTML = comparisonRows(needNames, state.initialNeeds, state.finalNeeds);
-  $('#earthMetrics').innerHTML = Object.entries(state.scenario.earthLabels).map(([key, label]) => comparisonRow(label, 100, state.finalEarth[key], true)).join('');
+  $('#finalNeeds').innerHTML = needComparisonRows(needNames, state.initialNeeds, state.finalNeeds);
+  $('#earthMetrics').innerHTML = earthChangeRows(state.scenario.earthLabels, state.finalEarth);
   const addedRisk = getPolicy(state.addedPolicy).risk[state.event.hazard] || 0;
-  $('#causalReceipt').innerHTML = `<h3>이 결과가 나온 이유</h3><ul><li>${state.scenario.name}의 ${hazardName(state.event.hazard)} 기초 위험과 주민 구성에 따라 사건 강도가 결정됐습니다.</li><li>초기·추가 정책은 위험을 ${state.outcomeMeta.mitigation}단계 완충하고, 대피·회복 역량을 ${state.outcomeMeta.response}만큼 높였습니다.</li><li>${policyName(state.addedPolicy)}은 이번 위험에 ${addedRisk < 0 ? '직접적인 완충 효과가 있었습니다.' : addedRisk > 0 ? '일부 부작용을 더했습니다.' : '직접 위험보다 주민의 필요와 회복을 지원했습니다.'}</li><li>최종 사건 강도는 ${state.outcomeMeta.finalSeverity.toFixed(1)} / 12로 계산됐습니다. 이 수치는 예측값이 아니라 선택의 관계를 비교하는 수업용 지표입니다.</li></ul>`;
+  const mitigationText = state.outcomeMeta.mitigation >= 4 ? '위험을 크게 완충' : state.outcomeMeta.mitigation >= 2 ? '위험을 일부 완충' : '직접 완충이 부족';
+  $('#causalReceipt').innerHTML = `<h3>결과를 만든 세 가지 요인</h3><div class="outcome-explain-grid"><div><span>환경 조건</span><strong>${hazardName(state.event.hazard)} 위험 ${riskLevel(state.outcomeMeta.finalSeverity)}</strong><p>${state.scenario.name}의 기초 위험과 2055년 사건이 함께 작용했습니다.</p></div><div><span>정책 조합</span><strong>${mitigationText}</strong><p>${addedRisk < 0 ? `${policyName(state.addedPolicy)}이 이번 위험을 직접 줄였습니다.` : addedRisk > 0 ? `${policyName(state.addedPolicy)}에 일부 부작용도 있었습니다.` : `${policyName(state.addedPolicy)}은 주민의 회복을 지원했습니다.`}</p></div><div><span>도시 대응력</span><strong>${responseLevel(state.outcomeMeta.response)}</strong><p>경보·대피·돌봄·회복 정책이 사건 뒤 이동 결과를 바꿨습니다.</p></div></div>`;
   updateDecisionLog();
 }
 
-function comparisonRows(labels, before, after) {
-  return Object.entries(labels).map(([key, label]) => comparisonRow(label, before[key], after[key], false)).join('');
+function needComparisonRows(labels, before, after) {
+  return Object.entries(labels).map(([key, label]) => {
+    const delta = after[key] - before[key];
+    const change = changeStatus(delta);
+    const current = needStatus(after[key]);
+    return `<div class="change-row"><div class="change-head"><strong>${label}</strong><div class="status-pair"><span class="status-badge ${current.className}">현재 ${current.label}</span><span class="change-badge ${change.className}">${change.symbol} ${change.label}</span></div></div><div class="bar-compare"><div><span>정착 직후</span><i><b class="before" style="width:${before[key]}%"></b></i></div><div><span>10년 후</span><i><b class="after ${change.className}" style="width:${after[key]}%"></b></i></div></div></div>`;
+  }).join('');
 }
-function comparisonRow(label, before, after, indexMode) {
-  const max = indexMode ? 145 : 100;
-  const beforeWidth = clamp(before / max * 100, 0, 100);
-  const afterWidth = clamp(after / max * 100, 0, 100);
-  const delta = after - before;
-  return `<div class="comparison-row"><div class="comparison-label"><span>${label}</span><span>${before} → <em>${after}</em> (${delta > 0 ? '+' : ''}${delta})</span></div><div class="comparison-track"><div class="comparison-before" style="width:${beforeWidth}%"></div><div class="comparison-after" style="width:${afterWidth}%"></div></div></div>`;
+
+function earthChangeRows(labels, values) {
+  return Object.entries(labels).map(([key, label]) => {
+    const delta = values[key] - 100;
+    const change = changeStatus(delta);
+    const current = earthStatus(values[key]);
+    const width = delta === 0 ? 0 : clamp(Math.abs(delta) / 45 * 50, 2, 50);
+    const position = delta >= 0 ? `left:50%;width:${width}%` : `right:50%;width:${width}%`;
+    return `<div class="earth-change-row"><div class="change-head"><strong>${label}</strong><div class="status-pair"><span class="status-badge ${current.className}">현재 ${current.label}</span><span class="change-badge ${change.className}">${change.symbol} ${change.label}</span></div></div><div class="earth-delta-track" aria-label="${label}: 현재 ${current.label}, 2045년보다 ${change.label}"><span class="baseline"></span><i class="earth-delta-bar ${change.className}" style="${position}"></i></div></div>`;
+  }).join('') + '<div class="earth-axis"><span>악화</span><span>2045 기준</span><span>회복</span></div>';
 }
 
 function renderLoop() {
   const evidence = state.event.causes.map((key) => state.scenario.indicators.find((item) => item.key === key)).filter(Boolean)[0];
   $('#loopPressure').textContent = `${evidence.label} ${evidence.value}`;
   $('#loopResponse').textContent = `${state.event.title} — ${state.event.change}`;
-  $('#loopPolicy').textContent = policyName(state.addedPolicy);
+  const policyIds = [...state.selected, state.addedPolicy];
+  if (!policyIds.includes(state.loopPolicy)) state.loopPolicy = null;
+  $('#loopPolicyChoices').innerHTML = policyIds.map((id) => `<button type="button" class="loop-policy-choice${state.loopPolicy === id ? ' selected' : ''}" data-loop-policy="${id}" aria-pressed="${state.loopPolicy === id}"><span class="policy-icon" aria-hidden="true">${getPolicy(id).icon}</span><span><small>${id === state.addedPolicy ? '2055년 추가 정책' : '2045년 초기 정책'}</small><strong>${policyName(id)}</strong></span><b aria-hidden="true">✓</b></button>`).join('');
+  document.querySelectorAll('[data-loop-policy]').forEach((button) => button.addEventListener('click', () => selectLoopPolicy(button.dataset.loopPolicy)));
+  $('#loopPolicy').textContent = state.loopPolicy ? policyName(state.loopPolicy) : '설명할 정책을 선택하세요';
+  $('#loopPolicyContext').classList.toggle('hidden', !state.loopPolicy);
+  if (state.loopPolicy) selectLoopPolicy(state.loopPolicy);
+  validateLoop();
+}
+
+function selectLoopPolicy(id) {
+  state.loopPolicy = id;
+  const policy = getPolicy(id);
+  document.querySelectorAll('[data-loop-policy]').forEach((button) => {
+    const selected = button.dataset.loopPolicy === id;
+    button.classList.toggle('selected', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
+  $('#loopPolicy').textContent = policyName(id);
+  const needKey = Object.keys(policy.needs).sort((a, b) => policy.needs[b] - policy.needs[a])[0];
+  const earthKey = Object.keys(state.scenario.earthLabels).sort((a, b) => Math.abs(policy.earth[b]) - Math.abs(policy.earth[a]))[0];
+  const hazardEffect = policy.risk[state.event.hazard] || 0;
+  const hazardText = hazardEffect < 0 ? `${hazardName(state.event.hazard)} 위험을 직접 완충` : hazardEffect > 0 ? `${hazardName(state.event.hazard)}에 부작용 가능` : `${hazardName(state.event.hazard)}보다 주민의 적응·회복을 지원`;
+  $('#loopPolicyContext').classList.remove('hidden');
+  $('#loopPolicyContext').innerHTML = `<div><span>정책 작동 방식</span><strong>${policyDescription(id)}</strong></div><div class="loop-context-chips"><span>주민: ${needNames[needKey]}</span><span>지구시스템: ${state.scenario.earthLabels[earthKey]}</span><span>${hazardText}</span></div>`;
+  const earthLabel = state.scenario.earthLabels[earthKey];
+  const directEarth = policy.earth[earthKey] > 0 ? `${earthLabel}이 회복되고 재해 완충 기능이 높아진다` : policy.earth[earthKey] < 0 ? `${earthLabel}이 감소하거나 단절되어 새로운 생태 부담이 생긴다` : `${earthLabel}에는 직접 변화가 적지만 주민의 적응 역량이 달라진다`;
+  $('#earthEffectChoice').innerHTML = `<option value="">변화를 선택하세요</option><option value="${directEarth}">${directEarth}</option><option value="${state.event.title}의 영향으로 ${earthLabel}이 계속 악화될 수 있다">사건의 영향으로 ${earthLabel}이 계속 악화될 수 있다</option><option value="관리 방식과 입지에 따라 ${earthLabel}의 변화가 달라진다">관리 방식과 입지에 따라 ${earthLabel}의 변화가 달라진다</option>`;
+  $('#returnEffectChoice').innerHTML = `<option value="">영향을 선택하세요</option><option value="${needNames[needKey]}이 개선되어 안정 정착 가능성이 커진다">${needNames[needKey]}이 개선되어 안정 정착 가능성이 커진다</option><option value="혜택과 부담이 주민 집단과 공간에 따라 다르게 나타난다">혜택과 부담이 주민 집단과 공간에 따라 다르게 나타난다</option><option value="환경 부담이 남아 2차 이동 위험이 계속될 수 있다">환경 부담이 남아 2차 이동 위험이 계속될 수 있다</option>`;
+  validateLoop();
 }
 
 function validateLoop() {
   const type = document.querySelector('input[name="loopType"]:checked');
-  state.loop = { earth: $('#earthEffect').value.trim(), returned: $('#returnEffect').value.trim(), type: type ? type.value : '', tradeoff: $('#tradeoff').value.trim() };
-  const ready = state.loop.earth.length >= 10 && state.loop.returned.length >= 10 && state.loop.tradeoff.length >= 10 && state.loop.type;
+  state.loop = { earth: $('#earthEffectChoice').value, returned: $('#returnEffectChoice').value, type: type ? type.value : '', reflection: $('#finalReflection').value.trim() };
+  const ready = state.loopPolicy && state.loop.earth && state.loop.returned && state.loop.reflection.length >= 20 && state.loop.type;
   $('#finishBtn').disabled = !ready;
-  $('#loopHint').textContent = ready ? '자료에서 시작한 공진화 고리가 완성되었습니다.' : '세 문장과 되먹임 유형을 모두 완성하세요.';
+  $('#loopHint').textContent = ready ? '자료에서 시작한 공진화 고리가 완성되었습니다.' : !state.loopPolicy ? '먼저 설명할 정책을 선택하세요.' : !state.loop.earth || !state.loop.returned ? '지구시스템 변화와 되돌아온 영향을 선택하세요.' : '되먹임 유형과 최종 해석을 완성하세요.';
 }
 
 function renderReport() {
   const p = state.population;
-  const earthSummary = Object.entries(state.scenario.earthLabels).map(([key, label]) => `${label} ${state.finalEarth[key]}`).join(' · ');
+  const stableDelta = p.stable - state.baselinePopulation.stable;
+  const secondaryDelta = state.baselinePopulation.secondary - p.secondary;
+  const responseSummary = `${policyName(state.addedPolicy)} 적용으로 안정 정착 ${Math.abs(stableDelta).toLocaleString()}명 ${stableDelta >= 0 ? '증가' : '감소'}, 2차 이동 ${Math.abs(secondaryDelta).toLocaleString()}명 ${secondaryDelta >= 0 ? '감소' : '증가'}`;
+  const needSummary = Object.entries(needNames).map(([key, label]) => `${label} ${needStatus(state.finalNeeds[key]).label}(${changeStatus(state.finalNeeds[key] - state.initialNeeds[key]).label})`).join(' · ');
+  const earthSummary = Object.entries(state.scenario.earthLabels).map(([key, label]) => `${label} ${earthStatus(state.finalEarth[key]).label}(${changeStatus(state.finalEarth[key] - 100).label})`).join(' · ');
   $('#reportSheet').innerHTML = `<header class="report-header"><div><p class="eyebrow">${state.scenario.name} · 2045–2055</p><h2>공진화 정책 결정서</h2></div><div class="report-meta"><strong>${escapeHtml(state.studentId)}</strong><br>${new Date().toLocaleDateString('ko-KR')}</div></header>
-  <section class="report-section"><h3>1. 환경 근거와 초기 정책</h3><p>${state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join(' · ')}</p><div class="report-policy-list">${state.selected.map((id) => `<div class="report-policy"><strong>${policyName(id)}</strong><p>${escapeHtml(state.reasons[id])}</p></div>`).join('')}</div></section>
-  <section class="report-section"><h3>2. 10년 후 사건과 적응</h3><div class="report-note"><strong>${state.event.title}</strong><br>${policyName(state.addedPolicy)} — ${escapeHtml(state.eventReason)}</div></section>
-  <section class="report-section"><h3>3. 최종 인구 상태</h3><div class="report-numbers report-population"><div class="report-number"><span>안정 정착</span><strong>${p.stable.toLocaleString()}명</strong></div><div class="report-number"><span>위험 노출</span><strong>${p.atRisk.toLocaleString()}명</strong></div><div class="report-number"><span>2차 이동</span><strong>${p.secondary.toLocaleString()}명</strong></div><div class="report-number"><span>정착 대기</span><strong>${p.waiting.toLocaleString()}명</strong></div></div><p>평균 필요 충족도 ${state.initialFit} → <strong>${state.finalFit}</strong> · ${earthSummary}</p></section>
-  <section class="report-section"><h3>4. 내가 만든 공진화 고리</h3><div class="report-loop">${escapeHtml($('#loopPressure').textContent)} → ${escapeHtml(state.event.change)} → <b>${policyName(state.addedPolicy)}</b> → ${escapeHtml(state.loop.earth)} → ${escapeHtml(state.loop.returned)}<br><b>${escapeHtml(state.loop.type)}</b></div><p><strong>새롭게 생길 수 있는 부담:</strong> ${escapeHtml(state.loop.tradeoff)}</p></section>`;
+  <section class="report-section"><h3>1. 환경 근거와 초기 전략</h3><p>${state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join(' · ')}</p><div class="report-policy-list">${state.selected.map((id) => `<div class="report-policy"><strong>${policyName(id)}</strong><p>${policyDescription(id)}</p></div>`).join('')}</div><p><strong>전략:</strong> ${escapeHtml(state.strategyReason)}</p></section>
+  <section class="report-section"><h3>2. 10년 후 사건과 적응</h3><div class="report-note"><strong>${state.event.title}</strong><br>${policyName(state.addedPolicy)} — ${escapeHtml(state.eventReason)}<br><b>추가 대응 비교:</b> ${responseSummary}</div></section>
+  <section class="report-section"><h3>3. 최종 인구 상태</h3><div class="report-numbers report-population"><div class="report-number"><span>안정 정착</span><strong>${p.stable.toLocaleString()}명</strong></div><div class="report-number"><span>위험 노출</span><strong>${p.atRisk.toLocaleString()}명</strong></div><div class="report-number"><span>2차 이동</span><strong>${p.secondary.toLocaleString()}명</strong></div><div class="report-number"><span>정착 대기</span><strong>${p.waiting.toLocaleString()}명</strong></div></div><p><strong>주민 지원:</strong> ${needSummary}</p><p><strong>지구시스템:</strong> ${earthSummary}</p></section>
+  <section class="report-section"><h3>4. 내가 만든 공진화 고리</h3><div class="report-loop">${escapeHtml($('#loopPressure').textContent)} → ${escapeHtml(state.event.change)} → <b>${policyName(state.loopPolicy)}</b> → ${escapeHtml(state.loop.earth)} → ${escapeHtml(state.loop.returned)}<br><b>${escapeHtml(state.loop.type)}</b></div><p><strong>예상·실제 결과와 남은 한계:</strong> ${escapeHtml(state.loop.reflection)}</p></section>`;
 }
 
 function reportText() {
   const p = state.population;
-  return `[공진화 정책 결정서 · ${state.studentId}]\n환경: ${state.scenario.name}\n관측: ${state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join(', ')}\n초기 정책: ${state.selected.map(policyName).join(', ')}\n10년 후 사건: ${state.event.title}\n추가 정책: ${policyName(state.addedPolicy)}\n최종 인구: 안정 ${p.stable}, 위험 노출 ${p.atRisk}, 2차 이동 ${p.secondary}, 정착 대기 ${p.waiting}\n공진화 고리: ${$('#loopPressure').textContent} → ${state.event.change} → ${policyName(state.addedPolicy)} → ${state.loop.earth} → ${state.loop.returned}\n부담: ${state.loop.tradeoff}`;
+  return `[공진화 정책 결정서 · ${state.studentId}]\n환경: ${state.scenario.name}\n관측: ${state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join(', ')}\n초기 정책: ${state.selected.map(policyName).join(', ')}\n초기 전략: ${state.strategyReason}\n10년 후 사건: ${state.event.title}\n추가 정책: ${policyName(state.addedPolicy)}\n최종 인구: 안정 ${p.stable}, 위험 노출 ${p.atRisk}, 2차 이동 ${p.secondary}, 정착 대기 ${p.waiting}\n공진화 고리: ${$('#loopPressure').textContent} → ${state.event.change} → ${policyName(state.loopPolicy)} → ${state.loop.earth} → ${state.loop.returned}\n최종 해석: ${state.loop.reflection}`;
 }
 
 async function copyReport() {
@@ -443,14 +592,13 @@ async function copyReport() {
 $('#startBtn').addEventListener('click', begin);
 $('#studentId').addEventListener('keydown', (event) => { if (event.key === 'Enter') begin(); });
 $('#confirmEnvironmentBtn').addEventListener('click', confirmEnvironment);
-$('#confirmPolicyBtn').addEventListener('click', () => { renderReasons(); showScreen('reasonScreen', '3 / 7 · 선택 근거'); });
-$('#backToPolicyBtn').addEventListener('click', () => showScreen('policyScreen', '2 / 7 · 정책 선택'));
-$('#runSimulationBtn').addEventListener('click', () => { renderReveal(); showScreen('revealScreen', '4 / 7 · 정착 직후'); });
-$('#drawEventBtn').addEventListener('click', () => { renderEvent(); showScreen('eventScreen', '5 / 7 · 10년 후 사건'); });
+$('#strategyReason').addEventListener('input', validateStrategy);
+$('#confirmPolicyBtn').addEventListener('click', () => { prepareInitialSettlement(); renderEvent(); showScreen('eventScreen', '3 / 5 · 2055년 사건'); });
 $('#eventReason').addEventListener('input', validateEvent);
-$('#confirmEventBtn').addEventListener('click', () => { renderOutcome(); showScreen('outcomeScreen', '6 / 7 · 10년 후 결과'); });
-$('#goToLoopBtn').addEventListener('click', () => { renderLoop(); showScreen('loopScreen', '7 / 7 · 공진화 고리'); });
-['earthEffect', 'returnEffect', 'tradeoff'].forEach((id) => $(`#${id}`).addEventListener('input', validateLoop));
+$('#confirmEventBtn').addEventListener('click', () => { renderOutcome(); showScreen('outcomeScreen', '4 / 5 · 결과 비교'); });
+$('#goToLoopBtn').addEventListener('click', () => { renderLoop(); showScreen('loopScreen', '5 / 5 · 공진화 설명'); });
+['earthEffectChoice', 'returnEffectChoice'].forEach((id) => $(`#${id}`).addEventListener('change', validateLoop));
+$('#finalReflection').addEventListener('input', validateLoop);
 document.querySelectorAll('input[name="loopType"]').forEach((radio) => radio.addEventListener('change', validateLoop));
 $('#finishBtn').addEventListener('click', () => { validateLoop(); renderReport(); showScreen('reportScreen', '완료 · 개인 결과지'); });
 $('#printBtn').addEventListener('click', () => window.print());
