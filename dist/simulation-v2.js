@@ -131,10 +131,59 @@ const getPolicy = (id) => policies.find((policy) => policy.id === id);
 const policyName = (id) => state.scenario.policyNames[id] || getPolicy(id).name;
 const policyDescription = (id) => getPolicy(id).desc;
 const noise = (key) => ((hashText(`${state.studentId}-${key}`) % 401) / 100) - 2;
+const screenSteps = { introScreen: 0, environmentScreen: 1, policyScreen: 2, reasonScreen: 3, revealScreen: 4, eventScreen: 5, outcomeScreen: 6, loopScreen: 7, reportScreen: 7 };
+let toastTimer;
+
+function renderProgress(step = 0) {
+  $('#progressHud').innerHTML = Array.from({ length: 7 }, (_, index) => {
+    const number = index + 1;
+    const status = number < step ? 'done' : number === step ? 'current' : '';
+    return `<span class="progress-segment ${status}" title="${number}단계" aria-label="${number}단계 ${status === 'done' ? '완료' : status === 'current' ? '진행 중' : '대기'}"></span>`;
+  }).join('');
+}
+
+function showToast(message) {
+  clearTimeout(toastTimer);
+  $('#gameToast').textContent = message;
+  $('#gameToast').classList.add('show');
+  toastTimer = setTimeout(() => $('#gameToast').classList.remove('show'), 1350);
+}
+
+function updateDecisionLog() {
+  const ribbon = $('#contextRibbon');
+  if (!state.scenario) { ribbon.classList.add('hidden'); return; }
+  ribbon.classList.remove('hidden');
+  const selectedNames = state.selected.map(policyName);
+  const chips = [`<span class="context-chip"><b>환경</b>${state.scenario.name}</span>`];
+  if (selectedNames.length) chips.push(`<span class="context-chip"><b>초기 정책</b>${selectedNames.join(' · ')}</span>`);
+  else chips.push('<span class="context-chip"><b>초기 정책</b>아직 선택 전</span>');
+  if (state.event) chips.push(`<span class="context-chip alert"><b>2055 사건</b>${state.event.title}</span>`);
+  if (state.addedPolicy) chips.push(`<span class="context-chip"><b>추가 정책</b>${policyName(state.addedPolicy)}</span>`);
+  $('#contextSummary').innerHTML = chips.join('');
+
+  const indicatorSummary = state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join(' · ');
+  const policyLog = state.selected.length
+    ? `<div class="log-policy-list">${state.selected.map((id) => `<div class="log-policy"><span aria-hidden="true">${getPolicy(id).icon}</span><span>${policyName(id)}</span></div>`).join('')}</div>`
+    : '<p class="log-empty">아직 초기 정책을 선택하지 않았습니다.</p>';
+  const eventLog = state.event
+    ? `<h3>${state.event.title}</h3><p>${state.event.change}</p>${state.addedPolicy ? `<div class="log-policy"><span aria-hidden="true">${getPolicy(state.addedPolicy).icon}</span><span>추가: ${policyName(state.addedPolicy)}</span></div>` : '<p class="log-empty">대응 정책 선택 전</p>'}`
+    : '<p class="log-empty">2055년 사건은 아직 공개되지 않았습니다.</p>';
+  $('#decisionContent').innerHTML = `<section class="log-block"><span>01 · 환경</span><h3>${state.scenario.name}</h3><p>${indicatorSummary}</p></section><section class="log-block"><span>02 · 초기 결정</span>${policyLog}</section><section class="log-block"><span>03 · 2055년</span>${eventLog}</section>`;
+}
+
+function setDrawer(open) {
+  $('#decisionDrawer').classList.toggle('open', open);
+  $('#decisionDrawer').setAttribute('aria-hidden', String(!open));
+  $('#decisionToggle').setAttribute('aria-expanded', String(open));
+  $('#drawerBackdrop').hidden = !open;
+}
 
 function showScreen(id, label) {
   document.querySelectorAll('.screen').forEach((screen) => screen.classList.toggle('active', screen.id === id));
   $('#stepPill').textContent = label;
+  renderProgress(screenSteps[id]);
+  updateDecisionLog();
+  setDrawer(false);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -187,7 +236,7 @@ function policyCard(policy, selected = false) {
 }
 
 function renderPolicies(target, list) {
-  $(target).innerHTML = list.map((policy) => policyCard(policy, target === '#eventPolicyGrid' && policy.id === state.addedPolicy)).join('');
+  $(target).innerHTML = list.map((policy) => policyCard(policy, target === '#policyGrid' ? state.selected.includes(policy.id) : policy.id === state.addedPolicy)).join('');
   document.querySelectorAll(`${target} .policy-card`).forEach((card) => card.addEventListener('click', () => target === '#policyGrid' ? toggleInitialPolicy(card) : toggleAddedPolicy(card)));
 }
 
@@ -200,6 +249,8 @@ function toggleInitialPolicy(card) {
   $('#selectedCount').textContent = state.selected.length;
   $('#confirmPolicyBtn').disabled = state.selected.length !== 3;
   $('#policyHint').textContent = state.selected.length === 3 ? '환경 자료와 연결해 선택 근거를 작성하세요.' : `정책을 ${3 - state.selected.length}개 더 선택하세요.`;
+  updateDecisionLog();
+  showToast(selected ? `${policyName(id)} 선택 해제` : `${policyName(id)} 선택`);
 }
 
 function renderReasons() {
@@ -274,12 +325,15 @@ function renderEvent() {
   const amplifiers = state.selected.filter((id) => (getPolicy(id).risk[e.hazard] || 0) > 0);
   $('#eventBanner').innerHTML = `<span>2055년 · ${state.scenario.name}</span><h2>${e.title}</h2><p>${e.desc}</p><div class="event-causes">${indicators.map((item) => `<span>${item.label} ${item.value}</span>`).join('')}<span>잔여 위험 ${state.eventScore.toFixed(1)} / 12</span>${reducers.map((id) => `<span>${policyName(id)}이 일부 완충</span>`).join('')}${amplifiers.map((id) => `<span>${policyName(id)}의 부작용이 위험 가중</span>`).join('')}</div>`;
   renderPolicies('#eventPolicyGrid', policies.filter((policy) => !state.selected.includes(policy.id)));
+  updateDecisionLog();
 }
 
 function toggleAddedPolicy(card) {
   state.addedPolicy = card.dataset.policy;
   document.querySelectorAll('#eventPolicyGrid .policy-card').forEach((item) => { const active = item.dataset.policy === state.addedPolicy; item.classList.toggle('selected', active); item.setAttribute('aria-pressed', String(active)); });
   $('#addedCount').textContent = '1';
+  updateDecisionLog();
+  showToast(`${policyName(state.addedPolicy)} 대응 정책 선택`);
   validateEvent();
 }
 
@@ -330,10 +384,14 @@ function renderOutcome() {
     ['2차 이동', p.secondary, '사건 뒤 다시 거처를 옮김', '#d86855'],
     ['정착 대기', p.waiting, '안전한 공간·서비스가 부족', '#75878a']
   ].map(([label, value, note, color]) => `<article class="population-card" style="--flow-color:${color}"><span>${label}</span><strong>${Number(value).toLocaleString()}명</strong><small>${note}</small></article>`).join('');
+  $('#populationBar').innerHTML = [
+    ['안정 정착', p.stable, '#33856f'], ['위험 노출', p.atRisk, '#d2a23f'], ['2차 이동', p.secondary, '#d86855'], ['정착 대기', p.waiting, '#75878a']
+  ].map(([label, value, color]) => `<span class="population-segment" style="width:${Number(value) / 12}%;background:${color}" title="${label} ${Number(value).toLocaleString()}명"></span>`).join('');
   $('#finalNeeds').innerHTML = comparisonRows(needNames, state.initialNeeds, state.finalNeeds);
   $('#earthMetrics').innerHTML = Object.entries(state.scenario.earthLabels).map(([key, label]) => comparisonRow(label, 100, state.finalEarth[key], true)).join('');
   const addedRisk = getPolicy(state.addedPolicy).risk[state.event.hazard] || 0;
   $('#causalReceipt').innerHTML = `<h3>이 결과가 나온 이유</h3><ul><li>${state.scenario.name}의 ${hazardName(state.event.hazard)} 기초 위험과 주민 구성에 따라 사건 강도가 결정됐습니다.</li><li>초기·추가 정책은 위험을 ${state.outcomeMeta.mitigation}단계 완충하고, 대피·회복 역량을 ${state.outcomeMeta.response}만큼 높였습니다.</li><li>${policyName(state.addedPolicy)}은 이번 위험에 ${addedRisk < 0 ? '직접적인 완충 효과가 있었습니다.' : addedRisk > 0 ? '일부 부작용을 더했습니다.' : '직접 위험보다 주민의 필요와 회복을 지원했습니다.'}</li><li>최종 사건 강도는 ${state.outcomeMeta.finalSeverity.toFixed(1)} / 12로 계산됐습니다. 이 수치는 예측값이 아니라 선택의 관계를 비교하는 수업용 지표입니다.</li></ul>`;
+  updateDecisionLog();
 }
 
 function comparisonRows(labels, before, after) {
@@ -398,3 +456,8 @@ $('#finishBtn').addEventListener('click', () => { validateLoop(); renderReport()
 $('#printBtn').addEventListener('click', () => window.print());
 $('#copyBtn').addEventListener('click', copyReport);
 $('#restartBtn').addEventListener('click', () => window.location.reload());
+$('#decisionToggle').addEventListener('click', () => setDrawer(!$('#decisionDrawer').classList.contains('open')));
+$('#decisionClose').addEventListener('click', () => setDrawer(false));
+$('#drawerBackdrop').addEventListener('click', () => setDrawer(false));
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setDrawer(false); });
+renderProgress(0);
