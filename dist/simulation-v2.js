@@ -664,6 +664,223 @@ function reportText() {
   return `[공진화 정책 결정서 · ${state.studentId}]\n※ 수업용 단순화 모형 결과이며 실제 지역의 미래 예측값이 아님\n환경: ${state.scenario.name}\n관측: ${state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join(', ')}\n초기 정책: ${state.selected.map(policyName).join(', ')}\n초기 전략: ${state.strategyReason}\n10년 후 사건: ${state.event.title}\n추가 정책: ${policyName(state.addedPolicy)}\n최종 인구: 안정 ${p.stable}, 위험 노출 ${p.atRisk}, 2차 이동 ${p.secondary}, 정착 대기 ${p.waiting}\n공진화 고리: ${$('#loopPressure').textContent} → ${state.event.change} → ${policyName(state.loopPolicy)} → ${state.loop.earth} → ${state.loop.biosphere} → ${state.loop.returned}\n최종 해석: ${state.loop.reflection}`;
 }
 
+function canvasRoundedRect(ctx, x, y, width, height, radius, fill, stroke = null) {
+  const r = Math.min(radius, width / 2, height / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + width - r, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + r);
+  ctx.lineTo(x + width, y + height - r);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+  ctx.lineTo(x + r, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.stroke(); }
+}
+
+function canvasTextLines(ctx, text, maxWidth) {
+  const source = String(text || '').replace(/\s+/g, ' ').trim();
+  if (!source) return [''];
+  const lines = [];
+  let line = '';
+  source.split(' ').forEach((word) => {
+    const candidate = line ? `${line} ${word}` : word;
+    if (ctx.measureText(candidate).width <= maxWidth) { line = candidate; return; }
+    if (line) { lines.push(line); line = ''; }
+    if (ctx.measureText(word).width <= maxWidth) { line = word; return; }
+    let piece = '';
+    [...word].forEach((character) => {
+      if (ctx.measureText(piece + character).width > maxWidth && piece) { lines.push(piece); piece = character; }
+      else piece += character;
+    });
+    line = piece;
+  });
+  if (line) lines.push(line);
+  return lines;
+}
+
+function drawCanvasText(ctx, text, x, y, maxWidth, lineHeight, color = '#18333a') {
+  ctx.fillStyle = color;
+  const lines = canvasTextLines(ctx, text, maxWidth);
+  lines.forEach((line, index) => ctx.fillText(line, x, y + (index * lineHeight)));
+  return y + (lines.length * lineHeight);
+}
+
+function createReportImageCanvas() {
+  const width = 1200;
+  const margin = 74;
+  const contentWidth = width - (margin * 2);
+  const working = document.createElement('canvas');
+  working.width = width;
+  working.height = 4600;
+  const ctx = working.getContext('2d');
+  const fontFamily = '"Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
+  const font = (size, weight = 500) => { ctx.font = `${weight} ${size}px ${fontFamily}`; };
+  const textHeight = (text, maxWidth, lineHeight) => canvasTextLines(ctx, text, maxWidth).length * lineHeight;
+  const palette = { navy: '#0b343d', teal: '#128277', mint: '#dff3eb', amber: '#f2bd52', coral: '#ed785e', ink: '#18333a', muted: '#60777b', line: '#c9dad5', pale: '#f2f7f5', cream: '#fff7e3' };
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, working.width, working.height);
+  ctx.textBaseline = 'top';
+
+  const sectionTitle = (number, title, y) => {
+    canvasRoundedRect(ctx, margin, y, 48, 48, 13, palette.teal);
+    font(24, 900); ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.fillText(number, margin + 24, y + 9);
+    ctx.textAlign = 'left'; font(31, 900); ctx.fillStyle = palette.navy; ctx.fillText(title, margin + 68, y + 5);
+    return y + 70;
+  };
+  const labeledBox = (label, body, y, tone = 'pale') => {
+    font(23, 500);
+    const bodyHeight = textHeight(body, contentWidth - 54, 37);
+    const height = 66 + bodyHeight;
+    canvasRoundedRect(ctx, margin, y, contentWidth, height, 16, tone === 'cream' ? palette.cream : palette.pale, tone === 'cream' ? '#e5c477' : palette.line);
+    font(22, 900); ctx.fillStyle = tone === 'cream' ? '#77500e' : palette.teal; ctx.fillText(label, margin + 26, y + 20);
+    font(23, 500);
+    drawCanvasText(ctx, body, margin + 26, y + 57, contentWidth - 54, 37, palette.ink);
+    return y + height;
+  };
+
+  ctx.fillStyle = palette.navy;
+  ctx.fillRect(0, 0, width, 245);
+  ctx.fillStyle = palette.mint;
+  font(20, 900); ctx.fillText('CO:EVOLVE 2055 · 개인 탐구 결과', margin, 40);
+  font(52, 900); ctx.fillStyle = '#ffffff'; ctx.fillText('공진화 정책 결정서', margin, 82);
+  font(25, 600); ctx.fillStyle = '#c9e0da'; ctx.fillText(`${state.scenario.name} · 2045–2055`, margin, 158);
+  ctx.textAlign = 'right';
+  font(25, 900); ctx.fillStyle = '#ffffff'; ctx.fillText(state.studentId, width - margin, 53);
+  font(19, 500); ctx.fillStyle = '#c9e0da'; ctx.fillText(new Date().toLocaleDateString('ko-KR'), width - margin, 91);
+  ctx.textAlign = 'left';
+  let y = 278;
+  font(19, 800);
+  y = drawCanvasText(ctx, '수업용 단순화 모형 결과 · 실제 지역의 미래 예측값이 아니라 변화 방향과 정책의 상충 관계를 해석하기 위한 자료입니다.', margin, y, contentWidth, 31, palette.muted) + 28;
+
+  y = sectionTitle('1', '환경 근거와 초기 전략', y);
+  font(23, 700);
+  y = drawCanvasText(ctx, state.scenario.indicators.map((item) => `${item.label} ${item.value}`).join('  ·  '), margin, y, contentWidth, 38, palette.ink) + 24;
+  const gap = 16;
+  const cardWidth = (contentWidth - (gap * 2)) / 3;
+  const policyCards = state.selected.map((id) => {
+    const title = policyName(id);
+    const body = policyDescription(id);
+    font(20, 500);
+    return { title, body, height: 76 + textHeight(body, cardWidth - 36, 30) };
+  });
+  const policyHeight = Math.max(...policyCards.map((item) => item.height));
+  policyCards.forEach((item, index) => {
+    const x = margin + (index * (cardWidth + gap));
+    canvasRoundedRect(ctx, x, y, cardWidth, policyHeight, 14, palette.pale, palette.line);
+    font(22, 900); ctx.fillStyle = palette.navy; ctx.fillText(item.title, x + 18, y + 18);
+    font(20, 500); drawCanvasText(ctx, item.body, x + 18, y + 56, cardWidth - 36, 30, palette.muted);
+  });
+  y += policyHeight + 22;
+  y = labeledBox('세 정책을 함께 선택한 이유', state.strategyReason, y) + 42;
+
+  y = sectionTitle('2', '10년 후 사건과 추가 대응', y);
+  const eventText = `${state.event.title} · ${policyName(state.addedPolicy)} — ${state.eventReason}`;
+  y = labeledBox('2055년 사건과 나의 대응', eventText, y, 'cream') + 18;
+  const stableDelta = state.population.stable - state.baselinePopulation.stable;
+  const secondaryDelta = state.baselinePopulation.secondary - state.population.secondary;
+  font(22, 700);
+  y = drawCanvasText(ctx, `추가 대응 비교 · 안정 정착 ${Math.abs(stableDelta).toLocaleString()}명 ${stableDelta >= 0 ? '증가' : '감소'} · 2차 이동 ${Math.abs(secondaryDelta).toLocaleString()}명 ${secondaryDelta >= 0 ? '감소' : '증가'}`, margin, y, contentWidth, 36, palette.coral) + 42;
+
+  y = sectionTitle('3', '최종 주민·지구시스템 결과', y);
+  const populationItems = [
+    ['안정 정착', state.population.stable], ['위험 노출', state.population.atRisk],
+    ['2차 이동', state.population.secondary], ['정착 대기', state.population.waiting]
+  ];
+  const numberGap = 14;
+  const numberWidth = (contentWidth - (numberGap * 3)) / 4;
+  populationItems.forEach(([label, value], index) => {
+    const x = margin + (index * (numberWidth + numberGap));
+    canvasRoundedRect(ctx, x, y, numberWidth, 112, 14, '#ffffff', palette.line);
+    font(18, 700); ctx.fillStyle = palette.muted; ctx.fillText(label, x + 18, y + 17);
+    font(32, 900); ctx.fillStyle = palette.navy; ctx.fillText(`${Number(value).toLocaleString()}명`, x + 18, y + 53);
+  });
+  y += 138;
+  const needSummary = Object.entries(needNames).map(([key, label]) => `${label} ${needStatus(state.finalNeeds[key]).label}(${changeStatus(state.finalNeeds[key] - state.initialNeeds[key]).label})`).join(' · ');
+  const earthSummary = Object.entries(state.scenario.earthLabels).map(([key, label]) => `${label} ${earthStatus(state.finalEarth[key]).label}(${changeStatus(state.finalEarth[key] - 100).label})`).join(' · ');
+  y = labeledBox('주민 지원 상태', needSummary, y) + 14;
+  y = labeledBox('지구시스템 상태', earthSummary, y) + 42;
+
+  y = sectionTitle('4', '내가 만든 공진화 고리', y);
+  const loopText = `${$('#loopPressure').textContent} → ${state.event.change} → ${policyName(state.loopPolicy)} → ${state.loop.earth} → ${state.loop.biosphere} → ${state.loop.returned}`;
+  font(23, 700);
+  const loopHeight = 80 + textHeight(loopText, contentWidth - 56, 39);
+  canvasRoundedRect(ctx, margin, y, contentWidth, loopHeight, 17, palette.navy);
+  font(20, 900); ctx.fillStyle = palette.mint; ctx.fillText(state.loop.type, margin + 28, y + 22);
+  font(23, 700); drawCanvasText(ctx, loopText, margin + 28, y + 61, contentWidth - 56, 39, '#ffffff');
+  y += loopHeight + 18;
+  y = labeledBox('예상·실제 결과와 남아 있는 한계', state.loop.reflection, y, 'cream') + 42;
+
+  ctx.strokeStyle = palette.line; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(margin, y); ctx.lineTo(width - margin, y); ctx.stroke();
+  y += 24;
+  font(18, 700); ctx.fillStyle = palette.muted; ctx.fillText('기후이동 공진화 탐구 · CO:EVOLVE 2055', margin, y);
+  ctx.textAlign = 'right'; ctx.fillText(`전체 주민 ${Object.values(state.population).reduce((sum, value) => sum + value, 0).toLocaleString()}명`, width - margin, y); ctx.textAlign = 'left';
+  const finalHeight = Math.ceil(y + 72);
+  const output = document.createElement('canvas');
+  output.width = width;
+  output.height = finalHeight;
+  const outputContext = output.getContext('2d');
+  outputContext.fillStyle = '#ffffff'; outputContext.fillRect(0, 0, width, finalHeight);
+  outputContext.drawImage(working, 0, 0, width, finalHeight, 0, 0, width, finalHeight);
+  return output;
+}
+
+function reportImageFilename() {
+  const safeId = state.studentId.replace(/[\\/:*?"<>|]/g, '_').slice(0, 30) || '학생';
+  return `공진화_정책결정서_${safeId}.jpg`;
+}
+
+function canvasJpegBlob(canvas) {
+  return new Promise((resolve, reject) => canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error('JPG 생성 실패')), 'image/jpeg', 0.94));
+}
+
+function downloadReportBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+}
+
+async function saveReportImage() {
+  const button = $('#imageSaveBtn');
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = 'JPG 만드는 중…';
+  try {
+    if (document.fonts?.ready) await document.fonts.ready;
+    const blob = await canvasJpegBlob(createReportImageCanvas());
+    const filename = reportImageFilename();
+    const mobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.matchMedia('(pointer: coarse)').matches;
+    const file = typeof File === 'function' ? new File([blob], filename, { type: 'image/jpeg' }) : null;
+    if (mobileDevice && file && navigator.share && navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file], title: '공진화 정책 결정서', text: `${state.studentId} 공진화 탐구 결과` });
+        showToast('공유 창으로 JPG 결과지를 보냈습니다.');
+      } catch (error) {
+        if (error.name === 'AbortError') { showToast('이미지 공유를 취소했습니다.'); return; }
+        downloadReportBlob(blob, filename);
+        showToast('공유 대신 JPG 파일로 저장했습니다.');
+      }
+    } else {
+      downloadReportBlob(blob, filename);
+      showToast('JPG 결과지를 저장했습니다.');
+    }
+  } catch (error) {
+    console.error(error);
+    showToast('JPG 생성에 실패했습니다. PDF 저장을 이용해 주세요.');
+  } finally {
+    button.disabled = false;
+    button.textContent = originalText;
+  }
+}
+
 function clearLoopState() {
   state.loopPolicy = null;
   state.loop = {};
@@ -786,6 +1003,7 @@ $('#finalReflection').addEventListener('input', validateLoop);
 document.querySelectorAll('input[name="loopType"]').forEach((radio) => radio.addEventListener('change', validateLoop));
 $('#finishBtn').addEventListener('click', () => { validateLoop(); renderReport(); showScreen('reportScreen', '완료 · 개인 결과지'); });
 $('#printBtn').addEventListener('click', () => window.print());
+$('#imageSaveBtn').addEventListener('click', saveReportImage);
 $('#copyBtn').addEventListener('click', copyReport);
 $('#restartBtn').addEventListener('click', () => window.location.reload());
 $('#backToIntroBtn').addEventListener('click', backToIntro);
